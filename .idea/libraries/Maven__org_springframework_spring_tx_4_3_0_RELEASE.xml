@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.springframework:spring-tx:4.3.0.RELEASE">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../maven-set/repository/org/springframework/spring-tx/4.3.0.RELEASE/spring-tx-4.3.0.RELEASE.jar!/" />
+      <root url="jar://D:/soft/maven-config/repository/org/springframework/spring-tx/4.3.0.RELEASE/spring-tx-4.3.0.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../../maven-set/repository/org/springframework/spring-tx/4.3.0.RELEASE/spring-tx-4.3.0.RELEASE-javadoc.jar!/" />
+      <root url="jar://D:/soft/maven-config/repository/org/springframework/spring-tx/4.3.0.RELEASE/spring-tx-4.3.0.RELEASE-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../maven-set/repository/org/springframework/spring-tx/4.3.0.RELEASE/spring-tx-4.3.0.RELEASE-sources.jar!/" />
+      <root url="jar://D:/soft/maven-config/repository/org/springframework/spring-tx/4.3.0.RELEASE/spring-tx-4.3.0.RELEASE-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
