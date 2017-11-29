@@ -1,6 +1,7 @@
 <component name="libraryTable">
   <library name="Maven: commons-digester:commons-digester:2.1">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://$USER_HOME$/environment/maven_repository/commons-digester/commons-digester/2.1/commons-digester-2.1.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -8,6 +9,15 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/environment/maven_repository/commons-digester/commons-digester/2.1/commons-digester-2.1-sources.jar!/" />
+=======
+      <root url="jar://D:/soft/maven-config/repository/commons-digester/commons-digester/2.1/commons-digester-2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/soft/maven-config/repository/commons-digester/commons-digester/2.1/commons-digester-2.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/soft/maven-config/repository/commons-digester/commons-digester/2.1/commons-digester-2.1-sources.jar!/" />
+>>>>>>> b6b590c28b97d85e3099479912cf3728eaf188d7
     </SOURCES>
   </library>
 </component>
