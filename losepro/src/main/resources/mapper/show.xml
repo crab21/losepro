@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mvc.slice.repository.SelectDeatilsInfo">
+   <!--开启二级缓存   -->
+    <cache readOnly="true" eviction="WEAK"/>
+
+    <resultMap id="blogArtInfo" type="BlogArticleInfo">
+        <id property="id" column="id"/>
+        <result property="artId" column="artId"/>
+        <result property="artTitle" column="artTitle"/>
+        <result property="artDetaInfo" column="artDetaInfo"/>
+        <result property="artTime" column="artTime"/>
+    </resultMap>
+
+    <select id="findBlogInfoByAid" parameterType="String" resultType="BlogArticleInfo" useCache="false">
+        SELECT  * FROM blog_articleinfo WHERE artId=#{aid};
+    </select>
+
+
+    <resultMap id="blogBriefInfo" type="BlogBriefInfo">
+        <id property="id" column="id"/>
+        <result property="artId" column="artId"/>
+        <result property="artTitle" column="artTitle"/>
+        <result property="artBrief" column="artBrief"/>
+        <result property="artTime" column="artTime"/>
+    </resultMap>
+
+
+    <select id="findAllInfoBrief" resultMap="blogBriefInfo" useCache="false">
+        SELECT  * FROM blog_brief;
+    </select>
+
+
+    <resultMap id="blogType" type="BlogTypeInfo">
+        <id column="id" property="id"/>
+        <result column="artType" property="artType"/>
+        <result column="creTime" property="creTime"/>
+    </resultMap>
+
+
+    <select id="findArticleType" resultMap="blogType" useCache="false">
+        SELECT * FROM blog_type;
+    </select>
+
+
+    <select id="selectBlogBriefByOneType" resultMap="blogBriefInfo" parameterType="String">
+      SELECT * FROM blog_brief where artId=(SELECT artId FROM blog_typearticle where typeId=(select Id from blog_type where artType=#{artType}))
+    </select>
+</mapper>
