@@ -4,7 +4,7 @@
 
 
 <div class="row clearfix">
-    <div class="col-md-8 column">
+    <div class="col-md-8 column" style="height: 80%">
         <blockquote>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
@@ -22,6 +22,21 @@
                 </a>
             </blockquote>
         </c:forEach>
+
+        <div style="position: absolute;bottom:2px;text-align: center;width: 100%;">
+            <a href="">首页</a>
+            <a href="">上一页</a>
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            ...
+
+            <a href="">4</a>
+            <a href="">5</a>
+            <a href="">6</a>
+            <a href="">下一页</a>
+            <a href="">尾页</a>
+        </div>
     </div>
     <div class="col-md-4 column">
         <div class="row clearfix">
