@@ -1,5 +1,6 @@
 package mvc.slice.biz.showinfo;
 
+import mvc.slice.pojo.paging.PageInfoBean;
 import mvc.slice.pojo.BlogArticleInfo;
 import mvc.slice.pojo.BlogBriefInfo;
 import mvc.slice.pojo.BlogTypeInfo;
@@ -16,7 +17,7 @@ public interface ShowInfoService {
     /**
      * @return
      */
-    List<BlogBriefInfo> findAllInfo();
+    List<BlogBriefInfo> findAllInfo(PageInfoBean pageInfoBean);
 
     /**
      *

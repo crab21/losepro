@@ -1,5 +1,6 @@
 package mvc.slice.repository;
 
+import mvc.slice.pojo.paging.PageInfoBean;
 import mvc.slice.pojo.BlogArticleInfo;
 import mvc.slice.pojo.BlogBriefInfo;
 import mvc.slice.pojo.BlogTypeInfo;
@@ -30,7 +31,7 @@ public interface SelectDeatilsInfo {
      * @return
      */
     @Transactional
-    List<BlogBriefInfo> findAllInfoBrief();
+    List<BlogBriefInfo> findAllInfoBrief(PageInfoBean pageInfoBean);
 
     /**
      * 获取所有文章类型  用于展示主页用

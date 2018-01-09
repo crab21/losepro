@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <body>
 
 
@@ -24,8 +25,8 @@
         </c:forEach>
 
         <div style="position: absolute;bottom:2px;text-align: center;width: 100%;">
-            <a href="">首页</a>
-            <a href="">上一页</a>
+            <a href="<%=request.getContextPath()%>/showmore">首页</a>
+            <a href="<%=request.getContextPath()%>/showmore?pageFlag=0&pageForeId=${blogBriefInfo[0].id}">上一页</a>
             <a href="">1</a>
             <a href="">2</a>
             <a href="">3</a>
@@ -34,7 +35,9 @@
             <a href="">4</a>
             <a href="">5</a>
             <a href="">6</a>
-            <a href="">下一页</a>
+            <c:set var="nextPageId" value="${fn:length(blogBriefInfo)}" scope="page"/>
+            <a href="<%=request.getContextPath()%>/showmore?pageFlag=1&pageLastId=${blogBriefInfo[nextPageId-1].id}">下一页</a>
+
             <a href="">尾页</a>
         </div>
     </div>

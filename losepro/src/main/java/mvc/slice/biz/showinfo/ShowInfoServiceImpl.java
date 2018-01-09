@@ -6,6 +6,7 @@ package mvc.slice.biz.showinfo;
  * @create 2017-12-02 9:00 PM
  **/
 
+import mvc.slice.pojo.paging.PageInfoBean;
 import mvc.slice.pojo.BlogArticleInfo;
 import mvc.slice.pojo.BlogBriefInfo;
 import mvc.slice.pojo.BlogTypeInfo;
@@ -34,8 +35,8 @@ public class ShowInfoServiceImpl implements ShowInfoService {
      *
      * @return
      */
-    public List<BlogBriefInfo> findAllInfo() {
-        return selectDeatilsInfo.findAllInfoBrief();
+    public List<BlogBriefInfo> findAllInfo(PageInfoBean pageInfoBean) {
+        return selectDeatilsInfo.findAllInfoBrief(pageInfoBean);
     }
 
     /**

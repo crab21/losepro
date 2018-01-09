@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mvc.slice.repository.SelectDeatilsInfo">
-   <!--开启二级缓存   -->
+    <!--开启二级缓存   -->
     <cache readOnly="true" eviction="WEAK"/>
 
     <resultMap id="blogArtInfo" type="BlogArticleInfo">
@@ -27,8 +27,14 @@
     </resultMap>
 
 
-    <select id="findAllInfoBrief" resultMap="blogBriefInfo" useCache="false">
-        SELECT  * FROM blog_brief;
+    <select id="findAllInfoBrief" resultMap="blogBriefInfo" useCache="false" parameterType="PageInfoBean">
+        SELECT  * FROM blog_brief WHERE
+        <if test="pageFlag==0">
+            id &lt; #{pageForeId} ORDER BY id DESC limit #{pageSize};
+        </if>
+        <if test="pageFlag!=0">
+            id &gt; #{pageLastId} ORDER  BY  id limit #{pageSize};
+        </if>
     </select>
 
 
@@ -45,6 +51,6 @@
 
 
     <select id="selectBlogBriefByOneType" resultMap="blogBriefInfo" parameterType="String">
-      SELECT * FROM blog_brief where artId=(SELECT artId FROM blog_typearticle where typeId=(select Id from blog_type where artType=#{artType}))
+        SELECT * FROM blog_brief where artId=(SELECT artId FROM blog_typearticle where typeId=(select Id from blog_type where artType=#{artType}))
     </select>
 </mapper>
