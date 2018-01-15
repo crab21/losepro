@@ -37,7 +37,8 @@ public class ShowInfo {
 
     /**
      * 通过artId查询某篇文章
-     *[ajax]
+     * [ajax]
+     *
      * @param articleId
      * @return
      * @throws SQLException
@@ -52,6 +53,7 @@ public class ShowInfo {
     /**
      * 查找所有的类型 用户文章头部
      * [ajax]
+     *
      * @param artId
      * @return
      */
@@ -68,6 +70,7 @@ public class ShowInfo {
 
     /**
      * 通过选择的类型，查找所有此类下面的内容
+     *
      * @param artType
      * @param model
      * @return

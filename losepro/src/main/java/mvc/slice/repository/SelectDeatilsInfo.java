@@ -1,5 +1,6 @@
 package mvc.slice.repository;
 
+import mvc.slice.controller.basedata.inputInfo.SubFormInfo;
 import mvc.slice.pojo.paging.PageInfoBean;
 import mvc.slice.pojo.BlogArticleInfo;
 import mvc.slice.pojo.BlogBriefInfo;
@@ -46,4 +47,11 @@ public interface SelectDeatilsInfo {
      * @return
      */
     List<BlogBriefInfo> selectBlogBriefByOneType(String artType);
+
+    /**
+     * 查找文章id
+     * @param subFormInfo
+     * @return
+     */
+    int selectBlogTypeId(SubFormInfo subFormInfo);
 }

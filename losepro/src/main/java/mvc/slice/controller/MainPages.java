@@ -68,7 +68,7 @@ public class MainPages {
                 if (o1.getId() > o2.getId()) {
                     return 1;
                 }
-                if(o1.getId() == o2.getId()){
+                if (o1.getId() == o2.getId()) {
                     return 0;
                 }
                 return -1;

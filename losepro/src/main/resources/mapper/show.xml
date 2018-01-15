@@ -53,4 +53,10 @@
     <select id="selectBlogBriefByOneType" resultMap="blogBriefInfo" parameterType="String">
         SELECT * FROM blog_brief where artId=(SELECT artId FROM blog_typearticle where typeId=(select Id from blog_type where artType=#{artType}))
     </select>
+
+
+
+    <select id="selectBlogTypeId" parameterType="SubFormInfo" resultType="java.lang.Integer">
+        SELECT id FROM blog_type WHERE artType=#{artType}
+    </select>
 </mapper>

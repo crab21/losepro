@@ -30,7 +30,6 @@ public class SubmitInfo {
     SubDeatilsInfo subDeatilsInfo;
 
 
-
     /**
      * @return
      */
@@ -40,12 +39,11 @@ public class SubmitInfo {
     }
 
     /**
-     *
      * @param SubArticleForm
      * @param model
      * @return
      */
-    @RequestMapping(value = "/subinfo", method = {RequestMethod.POST, RequestMethod.GET},produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "/subinfo", method = {RequestMethod.POST, RequestMethod.GET}, produces = "text/html;charset=UTF-8")
     public @ResponseBody
     String subinfo(@ModelAttribute SubArticleForm SubArticleForm, Model model) {
         //数据库存储数据的操作和其他相关调用
