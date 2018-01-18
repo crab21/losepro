@@ -51,6 +51,8 @@ public class MainPages {
         PageInfoBean pageInfoBean = new PageInfoBean();
         pageInfoBean.setShowSize(6);
         List<BlogBriefInfo> blogBriefInfo = showInfoService.findAllInfo(pageInfoBean);
+        //todo 分页中页码缺乏重新设计
+        PageInfoBean page = showInfoService.findPageInfos();
         System.out.println(blogBriefInfo.size());
         model.addAttribute("blogBriefInfo", blogBriefInfo);
         return "show_more";

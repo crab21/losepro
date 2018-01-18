@@ -2,6 +2,7 @@ package mvc.slice.biz.subInfo;
 
 import mvc.slice.controller.basedata.inputInfo.SubFormInfo;
 import mvc.slice.pojo.BlogArticleInfo;
+import mvc.slice.pojo.BlogTypeInfo;
 import mvc.slice.repository.InsertOrUpdate;
 import mvc.slice.repository.SelectDeatilsInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,11 @@ public class SubDeatilsInfoImpl implements SubDeatilsInfo {
 
         /*先插入文章的类型  对应subFormInfo中的typeId*/
         int insertTypeResult = 0;
-        int id = selectDeatilsInfo.selectBlogTypeId(subFormInfo);
-        if (!StringUtils.isEmpty(String.valueOf(id))) {
+        BlogTypeInfo blogTypeInfo = selectDeatilsInfo.selectBlogTypeId(subFormInfo);
+        if (blogTypeInfo != null) {
             //当存在此类型时候  直接把id插入到subFormInfo中
-            subFormInfo.setTypeId(id);
+            subFormInfo.setTypeId(blogTypeInfo.getId());
+            insertBlogInfo = insertOrUpdate.insertBlogInfo(subFormInfo);
         } else {
 //            artType不存在的情况
             insertTypeResult = insertOrUpdate.addBlogTypeInfo(subFormInfo);

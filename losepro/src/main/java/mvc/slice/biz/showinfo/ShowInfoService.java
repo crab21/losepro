@@ -20,15 +20,18 @@ public interface ShowInfoService {
     List<BlogBriefInfo> findAllInfo(PageInfoBean pageInfoBean);
 
     /**
-     *
      * @return
      */
     List<BlogTypeInfo> findAllArticleType();
 
     /**
-     *
      * @param artType
      * @return
      */
     List<BlogBriefInfo> findOneTypeInfo(String artType);
+
+    /**
+     * @return
+     */
+    PageInfoBean findPageInfos();
 }

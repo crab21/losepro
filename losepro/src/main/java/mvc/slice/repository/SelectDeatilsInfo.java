@@ -53,5 +53,12 @@ public interface SelectDeatilsInfo {
      * @param subFormInfo
      * @return
      */
-    int selectBlogTypeId(SubFormInfo subFormInfo);
+    BlogTypeInfo selectBlogTypeId(SubFormInfo subFormInfo);
+
+    /**
+     * 查找分页的总个数
+     * @param pageInfoBean
+     * @return
+     */
+    int selectBlogBriefPage();
 }

@@ -32,7 +32,6 @@ public class ShowInfoServiceImpl implements ShowInfoService {
     }
 
     /**
-     *
      * @return
      */
     public List<BlogBriefInfo> findAllInfo(PageInfoBean pageInfoBean) {
@@ -40,7 +39,6 @@ public class ShowInfoServiceImpl implements ShowInfoService {
     }
 
     /**
-     *
      * @return
      */
     public List<BlogTypeInfo> findAllArticleType() {
@@ -48,11 +46,22 @@ public class ShowInfoServiceImpl implements ShowInfoService {
     }
 
     /**
-     *
      * @param artType
      * @return
      */
     public List<BlogBriefInfo> findOneTypeInfo(String artType) {
         return selectDeatilsInfo.selectBlogBriefByOneType(artType);
+    }
+
+    public PageInfoBean findPageInfos() {
+        int pageTotal = selectDeatilsInfo.selectBlogBriefPage();
+        PageInfoBean pageInfoBean = new PageInfoBean();
+        if (pageTotal % pageInfoBean.getPageSize() == 0){
+            pageInfoBean.setTotal(pageTotal/pageInfoBean.getPageSize());
+        }else{
+            pageInfoBean.setTotal(pageTotal/pageInfoBean.getPageSize()+1);
+        }
+
+        return pageInfoBean;
     }
 }

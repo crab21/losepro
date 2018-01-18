@@ -56,7 +56,12 @@
 
 
 
-    <select id="selectBlogTypeId" parameterType="SubFormInfo" resultType="java.lang.Integer">
-        SELECT id FROM blog_type WHERE artType=#{artType}
+    <select id="selectBlogTypeId" parameterType="SubFormInfo" resultMap="blogType" useCache="false">
+        SELECT * FROM blog_type WHERE artType=#{artType}
+    </select>
+
+
+    <select id="selectBlogBriefPage" resultType="java.lang.Integer">
+        SELECT COUNT(id) AS total FROM blog_brief
     </select>
 </mapper>

@@ -15,8 +15,20 @@ public class PageInfoBean {
     /*标记是上一页还是下一页*/
     private int pageFlag = 1;
 
+
+
+    /*本页的页码*/
+    private int pageNumber = 1;
     /*中间展示的个数*/
     private int showSize;
+
+    public int getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
 
     public int getTotal() {
         return total;

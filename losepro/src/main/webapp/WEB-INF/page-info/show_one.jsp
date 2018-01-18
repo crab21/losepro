@@ -14,7 +14,7 @@
 
                     <div class="col-md-1 column"></div>
                     <div class="col-md-9 column">
-                        <h3>${blogInfoDetails.artTitle}</h3>
+                        <h3 id="hh"></h3>
                         <div id="test-editormd-view2">
                              <textarea id="append-test" style="display:none;">
 
@@ -36,7 +36,9 @@
                     $.post(url,{
                         artId:articleId
                     },function (markdown) {
+                        $("#hh").html(markdown.artTitle);
                         markdown = markdown.artDetaInfo;
+
                         var testEditormdView2;
                         <%--var markdown = ${blogInfoDetails.artDetaInfo};--%>
 //                    $("#test-editormd-view").html(markdown);
