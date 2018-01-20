@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.google.gson.Gson;
 import mvc.slice.pojo.paging.PageInfoBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,6 +44,8 @@ public class MainPages {
     }
 
     /**
+     * 首页
+     *
      * @param model
      * @return
      */
@@ -51,17 +54,23 @@ public class MainPages {
         PageInfoBean pageInfoBean = new PageInfoBean();
         pageInfoBean.setShowSize(6);
         List<BlogBriefInfo> blogBriefInfo = showInfoService.findAllInfo(pageInfoBean);
-        //todo 分页中页码缺乏重新设计
-        PageInfoBean page = showInfoService.findPageInfos();
-        System.out.println(blogBriefInfo.size());
+
+        PageInfoBean page = showInfoService.findPageInfos(pageInfoBean);
         model.addAttribute("blogBriefInfo", blogBriefInfo);
+        model.addAttribute("page", page);
         return "show_more";
     }
 
-
+    /**
+     * 分页
+     *
+     * @param model
+     * @param pageInfoBean
+     * @return
+     */
     @RequestMapping(value = "/showmore", params = "pageFlag")
     public String showmores(Model model, @ModelAttribute PageInfoBean pageInfoBean) {
-
+        //todo 分页中动态展示的页数
         pageInfoBean.setShowSize(6);
         List<BlogBriefInfo> blogBriefInfo = showInfoService.findAllInfo(pageInfoBean);
         Collections.sort(blogBriefInfo, new Comparator<BlogBriefInfo>() {
@@ -76,7 +85,9 @@ public class MainPages {
                 return -1;
             }
         });
+        PageInfoBean page = showInfoService.findPageInfos(pageInfoBean);
         model.addAttribute("blogBriefInfo", blogBriefInfo);
+        model.addAttribute("page", page);
         return "show_more";
     }
 

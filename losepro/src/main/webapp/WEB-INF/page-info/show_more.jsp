@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <body>
 
-
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/blog/showmore.js"></script>
 <div class="row clearfix">
     <div class="col-md-8 column" style="height: 80%">
         <blockquote>
@@ -25,19 +25,25 @@
         </c:forEach>
 
         <div style="position: absolute;bottom:2px;text-align: center;width: 100%;">
+            <input type="hidden" value="${fn:length(blogBriefInfo)}" id="blogSize"/>
+            <input type="hidden" value="${page.pageNumber}" id="pageNumber">
+            <input type="hidden" value="${page.total}" id="pageTotal">
             <a href="<%=request.getContextPath()%>/showmore">首页</a>
-            <a href="<%=request.getContextPath()%>/showmore?pageFlag=0&pageForeId=${blogBriefInfo[0].id}">上一页</a>
+            <c:set var="pageFlagBef" scope="page" value="0"/>
+            <a href="<%=request.getContextPath()%>/showmore?pageFlag=${pageFlagBef}&pageForeId=${blogBriefInfo[0].id}&pageNumber=${page.pageNumber-1}" id="beforePage">上一页</a>
+
+
             <a href="">1</a>
             <a href="">2</a>
             <a href="">3</a>
             ...
-
             <a href="">4</a>
             <a href="">5</a>
             <a href="">6</a>
-            <c:set var="nextPageId" value="${fn:length(blogBriefInfo)}" scope="page"/>
-            <a href="<%=request.getContextPath()%>/showmore?pageFlag=1&pageLastId=${blogBriefInfo[nextPageId-1].id}">下一页</a>
-
+            <c:set var="pageFlagNext" scope="page" value="1"/>
+            <c:set var="nextPageId" scope="page" value="${fn:length(blogBriefInfo)}"/>
+            <a href="<%=request.getContextPath()%>/showmore?pageFlag=${pageFlagNext}&pageLastId=${blogBriefInfo[nextPageId-1].id}&pageNumber=${page.pageNumber+1}"
+               id="nextPage">下一页</a>
             <a href="">尾页</a>
         </div>
     </div>

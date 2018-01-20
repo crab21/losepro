@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mvc.slice.repository.SelectDeatilsInfo">
     <!--开启二级缓存   -->
-    <cache readOnly="true" eviction="WEAK"/>
+    <!--<cache readOnly="true" eviction="WEAK"/>-->
 
     <resultMap id="blogArtInfo" type="BlogArticleInfo">
         <id property="id" column="id"/>

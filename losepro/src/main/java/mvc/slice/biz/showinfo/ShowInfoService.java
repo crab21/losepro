@@ -33,5 +33,5 @@ public interface ShowInfoService {
     /**
      * @return
      */
-    PageInfoBean findPageInfos();
+    PageInfoBean findPageInfos(PageInfoBean pageInfoBean);
 }

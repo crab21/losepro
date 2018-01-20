@@ -53,9 +53,10 @@ public class ShowInfoServiceImpl implements ShowInfoService {
         return selectDeatilsInfo.selectBlogBriefByOneType(artType);
     }
 
-    public PageInfoBean findPageInfos() {
+    public PageInfoBean findPageInfos(PageInfoBean pageInfoBean) {
         int pageTotal = selectDeatilsInfo.selectBlogBriefPage();
-        PageInfoBean pageInfoBean = new PageInfoBean();
+
+        /*计算总页码*/
         if (pageTotal % pageInfoBean.getPageSize() == 0){
             pageInfoBean.setTotal(pageTotal/pageInfoBean.getPageSize());
         }else{
