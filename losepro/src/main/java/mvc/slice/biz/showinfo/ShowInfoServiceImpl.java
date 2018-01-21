@@ -53,6 +53,11 @@ public class ShowInfoServiceImpl implements ShowInfoService {
         return selectDeatilsInfo.selectBlogBriefByOneType(artType);
     }
 
+    /**
+     *
+     * @param pageInfoBean
+     * @return
+     */
     public PageInfoBean findPageInfos(PageInfoBean pageInfoBean) {
         int pageTotal = selectDeatilsInfo.selectBlogBriefPage();
 

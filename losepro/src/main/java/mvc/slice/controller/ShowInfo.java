@@ -28,7 +28,7 @@ public class ShowInfo {
      * @throws SQLException
      */
     @RequestMapping("/{articleId}")
-    public String showOne(@PathVariable String articleId, Model model) throws SQLException {
+    public String showOne(@PathVariable String articleId, Model model) {
 
         model.addAttribute("articleId", articleId);
         return "show/show_one";
@@ -45,7 +45,7 @@ public class ShowInfo {
      */
     @RequestMapping(value = "/{articleId}", params = "artId", produces = "text/html;charset=utf-8")
     public @ResponseBody
-    String showOneFind(@PathVariable String articleId) throws SQLException {
+    String showOneFind(@PathVariable String articleId) {
         BlogArticleInfo blogInfoDetails = showInfoService.findBlogInfoDetails(articleId);
         return new Gson().toJson(blogInfoDetails);
     }

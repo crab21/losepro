@@ -49,7 +49,6 @@ public class SubmitInfo {
         //数据库存储数据的操作和其他相关调用
         SubFormInfo subFormInfo = beanMapper.map(SubArticleForm, SubFormInfo.class);
 
-        System.out.println(SubArticleForm.getArtDetaInfo() + "-------" + SubArticleForm.getArtTitle());
         int i = subDeatilsInfo.addDetailsInfo(subFormInfo);
         String flag = "";
         if (i > 0) {
