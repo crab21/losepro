@@ -24,6 +24,7 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
+
     <!--插入文章信息和相对应的类型信息-->
     <insert id="insertBlogInfo" parameterType="SubFormInfo">
         /*插入文章信息*/
@@ -37,10 +38,5 @@
         (#{artId}, #{typeId}, sysdate())
 
     </insert>
-
-
-
-
-
 
 </mapper>

@@ -32,7 +32,7 @@
             <c:set var="pageFlagBef" scope="page" value="0"/>
             <a href="<%=request.getContextPath()%>/showmore?pageFlag=${pageFlagBef}&pageForeId=${blogBriefInfo[0].id}&pageNumber=${page.pageNumber-1}" id="beforePage">上一页</a>
 
-
+            <%--todo 有待处理的页数 --%>
             <a href="">1</a>
             <a href="">2</a>
             <a href="">3</a>

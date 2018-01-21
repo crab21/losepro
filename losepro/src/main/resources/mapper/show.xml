@@ -26,14 +26,13 @@
         <result property="artTime" column="artTime"/>
     </resultMap>
 
-
     <select id="findAllInfoBrief" resultMap="blogBriefInfo" useCache="false" parameterType="PageInfoBean">
-        SELECT  * FROM blog_brief WHERE
+        SELECT * FROM blog_brief WHERE
         <if test="pageFlag==0">
             id &lt; #{pageForeId} ORDER BY id DESC limit #{pageSize};
         </if>
         <if test="pageFlag!=0">
-            id &gt; #{pageLastId} ORDER  BY  id limit #{pageSize};
+            id &gt; #{pageLastId} ORDER BY id limit #{pageSize};
         </if>
     </select>
 
@@ -44,22 +43,17 @@
         <result column="creTime" property="creTime"/>
     </resultMap>
 
-
     <select id="findArticleType" resultMap="blogType" useCache="false">
         SELECT * FROM blog_type;
     </select>
-
 
     <select id="selectBlogBriefByOneType" resultMap="blogBriefInfo" parameterType="String">
         SELECT * FROM blog_brief where artId IN (SELECT artId FROM blog_typearticle where typeId=(select Id from blog_type where artType=#{artType}))
     </select>
 
-
-
     <select id="selectBlogTypeId" parameterType="SubFormInfo" resultMap="blogType" useCache="false">
         SELECT * FROM blog_type WHERE artType=#{artType}
     </select>
-
 
     <select id="selectBlogBriefPage" resultType="java.lang.Integer">
         SELECT COUNT(id) AS total FROM blog_brief
