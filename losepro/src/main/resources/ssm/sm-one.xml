@@ -17,8 +17,29 @@
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:jdbc.properties"/>
     </bean>
-
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    <bean id="masterDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${jdbc.sdriver}"/>
+        <property name="url" value="${jdbc.surl}"/>
+        <property name="username" value="${jdbc.susername}"/>
+        <property name="password" value="${jdbc.spassword}"/>
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="${jdbc.sinitialSize}"></property>
+        <!-- 连接池最大数量 -->
+        <property name="maxActive" value="${jdbc.smaxActive}"></property>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle" value="${jdbc.smaxIdle}"></property>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="${jdbc.sminIdle}"></property>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="${jdbc.smaxWait}"></property>
+        <!--removeAbandoned: 是否自动回收超时连接-->
+        <property name="removeAbandoned" value="${jdbc.sremoveAbandoned}"/>
+        <!--防止出现错误:断开的管道 (Write failed)-->
+        <property name="testOnBorrow" value="${jdbc.stestOnBorrow}"></property>
+        <property name="validationQuery" value="${jdbc.svalidationQuery}"></property>
+    </bean>
+    <bean id="slaveDataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="url" value="${jdbc.url}"/>
@@ -42,6 +63,22 @@
     </bean>
 
 
+
+    <!-- 定义数据源，使用自己实现的数据源 -->
+    <bean id="dataSource" class="mvc.other.DynamicDataSource">
+        <!-- 设置多个数据源 -->
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <!-- 这个key需要和程序中的key一致 -->
+                <entry key="master" value-ref="masterDataSource"/>
+                <entry key="slave" value-ref="slaveDataSource"/>
+                <!-- 一主多从时多加个就是 一主多从要用 com.masterslave.date.DynamicDataSource2类   -->
+                <!-- <entry key="slave01" value-ref="slaveDataSource"/> -->
+            </map>
+        </property>
+        <!-- 设置默认的数据源，这里默认走写库 -->
+        <property name="defaultTargetDataSource" ref="masterDataSource"/>
+    </bean>
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
         <property name="dataSource" ref="dataSource"/>
@@ -53,16 +90,35 @@
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
 
-<!--    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="mvc.slice.repository" />
-        &lt;!&ndash;<property name="annotationClass" value="com.nuomi.crm.annotation.Mapper"/>&ndash;&gt;
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+<!--    &lt;!&ndash; mapper扫描器 &ndash;&gt;
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        &lt;!&ndash; 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 &ndash;&gt;
+        <property name="basePackage" value="mvc.slice.repository"></property>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>-->
 
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    <!-- 定义事务策略 -->
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!--定义查询方法都是只读的 -->
+            <tx:method name="query*" read-only="true" />
+            <tx:method name="find*" read-only="true" />
+            <tx:method name="get*" read-only="true" />
+            <tx:method name="select*" read-only="true" />
+            <!-- 主库执行操作，事务传播行为定义为默认行为 -->
+            <tx:method name="save*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="REQUIRED" />
+            <tx:method name="insert*" propagation="REQUIRED" />
+            <!--其他方法使用默认事务策略 -->
+            <tx:method name="*" />
+        </tx:attributes>
+    </tx:advice>
 
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <tx:annotation-driven transaction-manager="transactionManager"/>

@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
+
 /**
  * 主要是数据库的写操作
  *
@@ -14,9 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
  **/
 @Repository
 public interface InsertOrUpdate {
-    @Transactional
+    @Transactional(transactionManager = "transactionManager")
     int insertBlogInfo(SubFormInfo blogInfo);
 
-    @Transactional
+    @Transactional(transactionManager = "transactionManager")
     int addBlogTypeInfo(SubFormInfo subFormInfo);
 }

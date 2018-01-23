@@ -1,13 +1,17 @@
 package mvc.slice.repository;
 
+import com.oracle.webservices.internal.api.databinding.DatabindingMode;
 import mvc.slice.controller.basedata.inputInfo.SubFormInfo;
 import mvc.slice.pojo.paging.PageInfoBean;
 import mvc.slice.pojo.BlogArticleInfo;
 import mvc.slice.pojo.BlogBriefInfo;
 import mvc.slice.pojo.BlogTypeInfo;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
+import javax.annotation.sql.DataSourceDefinition;
 import java.util.List;
 
 /**
@@ -24,14 +28,13 @@ public interface SelectDeatilsInfo {
      * @param aid
      * @return
      */
-    @Transactional
+
     BlogArticleInfo findBlogInfoByAid(String aid);
 
     /**
      * 获取文章的摘要信息
      * @return
      */
-    @Transactional
     List<BlogBriefInfo> findAllInfoBrief(PageInfoBean pageInfoBean);
 
     /**
