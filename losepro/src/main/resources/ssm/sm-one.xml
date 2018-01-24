@@ -86,9 +86,9 @@
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath*:mapper/*.xml"></property>
     </bean>
-    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+<!--    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
-    </bean>
+    </bean>-->
 
 <!--    &lt;!&ndash; mapper扫描器 &ndash;&gt;
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
