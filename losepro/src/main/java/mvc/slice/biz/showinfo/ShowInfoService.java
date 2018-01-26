@@ -34,4 +34,10 @@ public interface ShowInfoService {
      * @return
      */
     PageInfoBean findPageInfos(PageInfoBean pageInfoBean);
+
+    /**
+     *
+     * @param countNumberMain
+     */
+    List<BlogBriefInfo> findBriefInfo(short countNumberMain);
 }

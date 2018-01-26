@@ -70,4 +70,13 @@ public class ShowInfoServiceImpl implements ShowInfoService {
 
         return pageInfoBean;
     }
+
+    /**
+     * 按时间顺序 倒序文章的最后十篇
+     * @param countNumberMain
+     * @return
+     */
+    public List<BlogBriefInfo> findBriefInfo(short countNumberMain) {
+        return selectDeatilsInfo.selectBlogBriefInfoByTime(countNumberMain);
+    }
 }

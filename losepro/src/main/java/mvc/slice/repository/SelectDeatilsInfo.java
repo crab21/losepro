@@ -63,4 +63,11 @@ public interface SelectDeatilsInfo {
      * @return
      */
     int selectBlogBriefPage();
+
+    /**
+     * 通过限制查出来数据的大小
+     * @param countNumberMain
+     * @return
+     */
+    List<BlogBriefInfo> selectBlogBriefInfoByTime(short countNumberMain);
 }

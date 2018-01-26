@@ -37,6 +37,11 @@
     </select>
 
 
+    <select id="selectBlogBriefInfoByTime" parameterType="java.lang.Short" resultMap="blogBriefInfo">
+          SELECT * FROM blog_brief ORDER BY id  DESC limit #{countNumberMain}
+    </select>
+
+
     <resultMap id="blogType" type="BlogTypeInfo">
         <id column="id" property="id"/>
         <result column="artType" property="artType"/>

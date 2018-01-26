@@ -35,6 +35,8 @@ public class MainPages {
      */
     @RequestMapping("/welcome")
     public String index(Model model) {
+        List<BlogBriefInfo> briefInfo = showInfoService.findBriefInfo(ConstantNumber.COUNT_NUMBER_MAIN);
+        model.addAttribute("briefInfo",briefInfo);
         return "show_welcome";
     }
 

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="jumbotron">
@@ -21,12 +22,12 @@
                     按时间
                 </h3>
             </div>
-            <div class="panel-body">
-                Panel content
-            </div>
-            <div class="panel-footer">
-                Panel footer
-            </div>
+
+            <c:forEach items="${briefInfo}" var="briefInfoOne">
+                <div class="panel-footer">
+                <a href="#">${briefInfoOne.artTitle}</a>
+                </div>
+            </c:forEach>
         </div>
     </div>
     <div class="col-md-6 column">
