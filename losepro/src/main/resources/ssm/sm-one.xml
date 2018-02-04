@@ -18,49 +18,84 @@
         <property name="location" value="classpath:jdbc.properties"/>
     </bean>
 
-    <bean id="masterDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    <bean id="masterDataSource" class="com.alibaba.druid.pool.DruidDataSource"
           destroy-method="close">
         <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
-        <!-- 初始化连接大小 -->
-        <property name="initialSize" value="${jdbc.initialSize}"></property>
-        <!-- 连接池最大数量 -->
-        <property name="maxActive" value="${jdbc.maxActive}"></property>
-        <!-- 连接池最大空闲 -->
-        <property name="maxIdle" value="${jdbc.maxIdle}"></property>
-        <!-- 连接池最小空闲 -->
-        <property name="minIdle" value="${jdbc.minIdle}"></property>
-        <!-- 获取连接最大等待时间 -->
-        <property name="maxWait" value="${jdbc.maxWait}"></property>
-        <!--removeAbandoned: 是否自动回收超时连接-->
-        <property name="removeAbandoned" value="${jdbc.removeAbandoned}"/>
-        <!--防止出现错误:断开的管道 (Write failed)-->
-        <property name="testOnBorrow" value="${jdbc.testOnBorrow}"></property>
-        <property name="validationQuery" value="${jdbc.validationQuery}"></property>
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="1" />
+        <property name="minIdle" value="1" />
+        <property name="maxActive" value="40" />
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000" />
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000" />
+
+        <property name="validationQuery" value="SELECT 'x' FROM DUAL" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="false" />
+        <property name="testOnReturn" value="false" />
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="true" />
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+
+        <!-- 超过时间限制是否回收 -->
+        <property name="removeAbandoned" value="true" />
+        <!-- 超时时间；单位为秒。180秒=3分钟 -->
+        <property name="removeAbandonedTimeout" value="180" />
+        <!-- 关闭abanded连接时输出错误日志 -->
+        <property name="logAbandoned" value="true" />
+
+        <!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
+        <!-- property name="filters" value="stat" /-->
+
     </bean>
-    <bean id="slaveDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    <bean id="slaveDataSource" class="com.alibaba.druid.pool.DruidDataSource"
           destroy-method="close">
         <property name="driverClassName" value="${jdbc.sdriver}"/>
         <property name="url" value="${jdbc.surl}"/>
         <property name="username" value="${jdbc.susername}"/>
         <property name="password" value="${jdbc.spassword}"/>
-        <!-- 初始化连接大小 -->
-        <property name="initialSize" value="${jdbc.sinitialSize}"></property>
-        <!-- 连接池最大数量 -->
-        <property name="maxActive" value="${jdbc.smaxActive}"></property>
-        <!-- 连接池最大空闲 -->
-        <property name="maxIdle" value="${jdbc.smaxIdle}"></property>
-        <!-- 连接池最小空闲 -->
-        <property name="minIdle" value="${jdbc.sminIdle}"></property>
-        <!-- 获取连接最大等待时间 -->
-        <property name="maxWait" value="${jdbc.smaxWait}"></property>
-        <!--removeAbandoned: 是否自动回收超时连接-->
-        <property name="removeAbandoned" value="${jdbc.sremoveAbandoned}"/>
-        <!--防止出现错误:断开的管道 (Write failed)-->
-        <property name="testOnBorrow" value="${jdbc.stestOnBorrow}"></property>
-        <property name="validationQuery" value="${jdbc.svalidationQuery}"></property>
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="1" />
+        <property name="minIdle" value="1" />
+        <property name="maxActive" value="40" />
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000" />
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000" />
+
+        <property name="validationQuery" value="SELECT 'x' FROM DUAL" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="false" />
+        <property name="testOnReturn" value="false" />
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="true" />
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+
+        <!-- 超过时间限制是否回收 -->
+        <property name="removeAbandoned" value="true" />
+        <!-- 超时时间；单位为秒。180秒=3分钟 -->
+        <property name="removeAbandonedTimeout" value="180" />
+        <!-- 关闭abanded连接时输出错误日志 -->
+        <property name="logAbandoned" value="true" />
+
+        <!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
+        <!-- property name="filters" value="stat" /-->
     </bean>
 
 

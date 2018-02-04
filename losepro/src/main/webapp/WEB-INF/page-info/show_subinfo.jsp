@@ -62,10 +62,11 @@
         <input type="text" style="width: 200px;display: inline-block;float: left" class="form-control"  name="artTitle" id="artTitle" placeholder="请输入标题">
         <input type="text" style="width: 200px;display: inline-block;float: right" class="form-control"  name="artType" id="artType" placeholder="新建标签">
     </div>
+    <input type="button" id="btns" class="btn" value="ok"/>
     <div id="test-editormd">
         <textarea style="display:none;" id="artDetaInfo" name="artDetaInfo"></textarea>
     </div>
-    <input type="button" id="btns" value="ok"/>
+
 
 
 <script src="<%=request.getContextPath()%>/js/md/jquery.min.js"></script>
@@ -74,6 +75,7 @@
         $("#btns").click(function () {
             var artTitle=$("#artTitle").val();
             var artType=$("#artType").val();
+            alert(artTitle)
             $.ajax({
                 url:"sub/subinfo",
                 type:"POST",
