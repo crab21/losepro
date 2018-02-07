@@ -24,7 +24,7 @@
             </blockquote>
         </c:forEach>
 
-        <div style="position: absolute;bottom:2px;text-align: center;width: 100%;">
+        <div style="text-align: center;width: 100%;">
             <input type="hidden" value="${fn:length(blogBriefInfo)}" id="blogSize"/>
             <input type="hidden" value="${page.pageNumber}" id="pageNumber">
             <input type="hidden" value="${page.total}" id="pageTotal">
@@ -33,13 +33,7 @@
             <a href="<%=request.getContextPath()%>/showmore?pageFlag=${pageFlagBef}&pageForeId=${blogBriefInfo[0].id}&pageNumber=${page.pageNumber-1}" id="beforePage">上一页</a>
 
             <%--todo 有待处理的页数 --%>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            ...
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href="">6</a>
+
             <c:set var="pageFlagNext" scope="page" value="1"/>
             <c:set var="nextPageId" scope="page" value="${fn:length(blogBriefInfo)}"/>
             <a href="<%=request.getContextPath()%>/showmore?pageFlag=${pageFlagNext}&pageLastId=${blogBriefInfo[nextPageId-1].id}&pageNumber=${page.pageNumber+1}"

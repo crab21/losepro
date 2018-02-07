@@ -6,6 +6,7 @@ import mvc.slice.biz.showinfo.ShowInfoService;
 import mvc.slice.pojo.BlogArticleInfo;
 import mvc.slice.pojo.BlogBriefInfo;
 import mvc.slice.pojo.BlogTypeInfo;
+import mvc.slice.pojo.paging.PageInfoBean;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,8 +78,10 @@ public class ShowInfo {
      */
     @RequestMapping(value = "/findType", params = "artType", method = {RequestMethod.GET})
     public String findTypeById(@RequestParam("artType") String artType, Model model) {
-        List<BlogBriefInfo> blogBriefInfo = showInfoService.findOneTypeInfo(artType);
+        PageInfoBean page = new PageInfoBean();
+        List<BlogBriefInfo> blogBriefInfo = showInfoService.findOneTypeInfo(artType, page);
         model.addAttribute("blogBriefInfo", blogBriefInfo);
+        model.addAttribute("page", page);
         return "show_more";
     }
 }

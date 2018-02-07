@@ -5,6 +5,7 @@ import mvc.slice.pojo.BlogArticleInfo;
 import mvc.slice.pojo.BlogBriefInfo;
 import mvc.slice.pojo.BlogTypeInfo;
 import mvc.slice.pojo.paging.PageInfoBean;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,7 +46,7 @@ public interface SelectDeatilsInfo {
      * @param artType
      * @return
      */
-    List<BlogBriefInfo> selectBlogBriefByOneType(String artType);
+    List<BlogBriefInfo> selectBlogBriefByOneType(@Param("artType")String artType, @Param("pageInfoBean")PageInfoBean pageInfoBean);
 
     /**
      * 查找文章id

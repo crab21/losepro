@@ -49,8 +49,8 @@ public class ShowInfoServiceImpl implements ShowInfoService {
      * @param artType
      * @return
      */
-    public List<BlogBriefInfo> findOneTypeInfo(String artType) {
-        return selectDeatilsInfo.selectBlogBriefByOneType(artType);
+    public List<BlogBriefInfo> findOneTypeInfo(String artType, PageInfoBean pageInfoBean) {
+        return selectDeatilsInfo.selectBlogBriefByOneType(artType, pageInfoBean);
     }
 
     /**

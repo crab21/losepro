@@ -18,7 +18,7 @@ public interface ShowInfoService {
     List<BlogTypeInfo> findAllArticleType();
 
 
-    List<BlogBriefInfo> findOneTypeInfo(String artType);
+    List<BlogBriefInfo> findOneTypeInfo(String artType, PageInfoBean pageInfoBean);
 
 
     PageInfoBean findPageInfos(PageInfoBean pageInfoBean);

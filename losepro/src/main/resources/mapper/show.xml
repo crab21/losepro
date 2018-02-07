@@ -52,8 +52,14 @@
         SELECT * FROM blog_type;
     </select>
 
-    <select id="selectBlogBriefByOneType" resultMap="blogBriefInfo" parameterType="String">
+    <select id="selectBlogBriefByOneType" resultMap="blogBriefInfo">
         SELECT * FROM blog_brief where artId IN (SELECT artId FROM blog_typearticle where typeId=(select Id from blog_type where artType=#{artType}))
+        AND <if test="pageInfoBean.pageFlag==0">
+            id &lt; #{pageInfoBean.pageForeId} ORDER BY id DESC limit #{pageInfoBean.pageSize};
+        </if>
+        <if test="pageInfoBean.pageFlag!=0">
+            id &gt; #{pageInfoBean.pageLastId} ORDER BY id limit #{pageInfoBean.pageSize};
+        </if>
     </select>
 
     <select id="selectBlogTypeId" parameterType="SubFormInfo" resultMap="blogType" useCache="false">
