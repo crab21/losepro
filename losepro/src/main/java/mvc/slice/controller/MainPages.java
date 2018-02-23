@@ -36,7 +36,9 @@ public class MainPages {
     @RequestMapping("/welcome")
     public String index(Model model) {
         List<BlogBriefInfo> briefInfo = showInfoService.findBriefInfo(ConstantNumber.COUNT_NUMBER_MAIN);
+        List<BlogBriefInfo> briefInfoOfEvalReadNum =  showInfoService.findBriefInfoByEvalReadNumber(ConstantNumber.COUNT_NUMBER_MAIN);
         model.addAttribute("briefInfo",briefInfo);
+        model.addAttribute("briefInfoOfEvalReadNum",briefInfoOfEvalReadNum);
         return "show_welcome";
     }
 
@@ -81,6 +83,7 @@ public class MainPages {
     }
 
     /**
+     *
      * @return
      */
     @RequestMapping("/showinfo")

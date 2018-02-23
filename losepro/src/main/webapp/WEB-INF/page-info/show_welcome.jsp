@@ -37,12 +37,13 @@
                     按阅读量
                 </h3>
             </div>
-            <div class="panel-body">
-                Panel content
-            </div>
-            <div class="panel-footer">
-                Panel footer
-            </div>
+
+
+            <c:forEach items="${briefInfoOfEvalReadNum}" var="briefInfoOne">
+                <div class="panel-footer">
+                    <a href="#">${briefInfoOne.artTitle} &nbsp;&nbsp;&nbsp;</a>
+                </div>
+            </c:forEach>
         </div>
     </div>
 </div>

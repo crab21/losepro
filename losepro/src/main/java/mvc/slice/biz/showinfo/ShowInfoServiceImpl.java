@@ -79,4 +79,13 @@ public class ShowInfoServiceImpl implements ShowInfoService {
     public List<BlogBriefInfo> findBriefInfo(short countNumberMain) {
         return selectDeatilsInfo.selectBlogBriefInfoByTime(countNumberMain);
     }
+
+    /**
+     * 按照阅读量 倒叙文章的最后10篇
+     * @param countNumberMain
+     * @return
+     */
+    public List<BlogBriefInfo> findBriefInfoByEvalReadNumber(short countNumberMain) {
+        return selectDeatilsInfo.selectBlogBriefInfoByEvalNum(countNumberMain);
+    }
 }

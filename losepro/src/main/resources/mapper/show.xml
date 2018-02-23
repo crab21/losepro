@@ -38,7 +38,14 @@
 
 
     <select id="selectBlogBriefInfoByTime" parameterType="java.lang.Short" resultMap="blogBriefInfo">
-          SELECT * FROM blog_brief ORDER BY id  DESC limit #{countNumberMain}
+          SELECT id,artId,artTitle FROM blog_brief ORDER BY id  DESC limit #{countNumberMain}
+    </select>
+
+    <select id="selectBlogBriefInfoByEvalNum" parameterType="java.lang.Short" resultMap="blogBriefInfo">
+      SELECT id,c.artId,artTitle FROM wpy_blog.blog_brief AS b
+       INNER join (SELECT artId,evalReadNumber FROM wpy_blog.blog_evaluate ORDER BY evalReadNumber DESC limit #{countNumberMain})
+       AS c ON  b.artId = c.artId
+       order by evalReadNumber desc
     </select>
 
 
@@ -69,4 +76,11 @@
     <select id="selectBlogBriefPage" resultType="java.lang.Integer">
         SELECT COUNT(id) AS total FROM blog_brief
     </select>
+
+
+
+
+
+
+
 </mapper>

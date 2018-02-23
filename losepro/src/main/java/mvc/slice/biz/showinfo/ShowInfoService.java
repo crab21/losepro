@@ -25,4 +25,6 @@ public interface ShowInfoService {
 
 
     List<BlogBriefInfo> findBriefInfo(short countNumberMain);
+
+    List<BlogBriefInfo> findBriefInfoByEvalReadNumber(short countNumberMain);
 }

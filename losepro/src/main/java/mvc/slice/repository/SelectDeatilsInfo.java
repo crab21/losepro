@@ -67,4 +67,11 @@ public interface SelectDeatilsInfo {
      * @return
      */
     List<BlogBriefInfo> selectBlogBriefInfoByTime(short countNumberMain);
+
+    /**
+     * 通过阅读量 倒叙查询数据
+     * @param countNumberMain
+     * @return
+     */
+    List<BlogBriefInfo> selectBlogBriefInfoByEvalNum(short countNumberMain);
 }
