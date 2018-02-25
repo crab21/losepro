@@ -15,7 +15,7 @@
 
         <c:forEach items="${blogBriefInfo}" var="blogInfo" step="1">
             <blockquote>
-                <a href="<%=request.getContextPath()%>/show/${blogInfo.artId}">
+                <a href="<%=request.getContextPath()%>/show/${blogInfo.artId}" style="text-decoration: none">
                     <p>
                             ${blogInfo.artTitle}
                     </p>

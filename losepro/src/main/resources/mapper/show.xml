@@ -59,9 +59,19 @@
         SELECT * FROM blog_type;
     </select>
 
+    <select id="selectBlogBriefByArtType" parameterType="String" resultType="java.lang.Integer">
+       SELECT COUNT(id) AS  total FROM wpy_blog.blog_brief AS a
+       INNER JOIN
+       (SELECT artId FROM wpy_blog.blog_typearticle WHERE  typeId=(select Id from wpy_blog.blog_type where artType="jj")) AS b
+       ON a.artId = b.artId
+    </select>
+
+
     <select id="selectBlogBriefByOneType" resultMap="blogBriefInfo">
-        SELECT * FROM blog_brief where artId IN (SELECT artId FROM blog_typearticle where typeId=(select Id from blog_type where artType=#{artType}))
-        AND <if test="pageInfoBean.pageFlag==0">
+        SELECT * FROM blog_brief where artId IN (SELECT artId FROM blog_typearticle where typeId=(select Id from
+        blog_type where artType=#{artType}))
+        AND
+        <if test="pageInfoBean.pageFlag==0">
             id &lt; #{pageInfoBean.pageForeId} ORDER BY id DESC limit #{pageInfoBean.pageSize};
         </if>
         <if test="pageInfoBean.pageFlag!=0">
@@ -76,11 +86,6 @@
     <select id="selectBlogBriefPage" resultType="java.lang.Integer">
         SELECT COUNT(id) AS total FROM blog_brief
     </select>
-
-
-
-
-
 
 
 </mapper>

@@ -5,7 +5,7 @@ public class PageInfoBean {
     private int total;
 
     /*每一页的总大小*/
-    private final int pageSize = 20;
+    private final int pageSize = 15;
 
     /*上一页  下一页 通过索引来快速定位*/
     private int pageForeId = 0;

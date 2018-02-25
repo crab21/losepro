@@ -56,7 +56,7 @@ public interface SelectDeatilsInfo {
     BlogTypeInfo selectBlogTypeId(SubFormInfo subFormInfo);
 
     /**
-     *
+     *  查询所有数据的总个数
      * @return
      */
     int selectBlogBriefPage();
@@ -74,4 +74,11 @@ public interface SelectDeatilsInfo {
      * @return
      */
     List<BlogBriefInfo> selectBlogBriefInfoByEvalNum(short countNumberMain);
+
+    /**
+     * 通过类型查询总个数
+     * @param artType
+     * @return
+     */
+    int selectBlogBriefByArtType(String artType);
 }

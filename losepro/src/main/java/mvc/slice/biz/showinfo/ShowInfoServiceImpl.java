@@ -50,6 +50,12 @@ public class ShowInfoServiceImpl implements ShowInfoService {
      * @return
      */
     public List<BlogBriefInfo> findOneTypeInfo(String artType, PageInfoBean pageInfoBean) {
+        int pageTotal = selectDeatilsInfo.selectBlogBriefByArtType(artType);
+        if (pageTotal % pageInfoBean.getPageSize() == 0){
+            pageInfoBean.setTotal(pageTotal/pageInfoBean.getPageSize());
+        }else{
+            pageInfoBean.setTotal(pageTotal/pageInfoBean.getPageSize()+1);
+        }
         return selectDeatilsInfo.selectBlogBriefByOneType(artType, pageInfoBean);
     }
 

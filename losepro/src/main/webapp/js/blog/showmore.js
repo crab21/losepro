@@ -3,7 +3,7 @@ $(function () {
     var pageNumber = $("#pageNumber").val();
     var pageTotal = $("#pageTotal").val();
 
-    if (blogSize < 20) {
+    if (blogSize < 15) {
         $("#nextPage").attr("href", "javascript:alert('已经是最后一页了...')").css("color", "grey")
     }
     if (pageNumber == 1) {
