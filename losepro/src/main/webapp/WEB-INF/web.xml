@@ -14,8 +14,12 @@
     </listener>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:ssm/spring-mybatis.xml</param-value>
+        <param-value>
+            classpath:ssm/spring-mybatis.xml
+            classpath*:ssm/spring-security.xml
+        </param-value>
     </context-param>
+
 
     <context-param>
         <param-name>spring.profiles.active</param-name>
@@ -39,6 +43,17 @@
         <servlet-name>springmvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>  <!-- (2) -->
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  <!-- (3) -->
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>  <!-- (4) -->
+    </filter-mapping>
+
 
 
 

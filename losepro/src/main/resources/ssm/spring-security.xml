@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"> <!-- (1) -->
+
+    <sec:http pattern="/resources/**" security="none"/> <!-- (2) -->
+    <sec:http pattern="/css/**" security="none"/>
+    <sec:http pattern="/js/**" security="none"/>
+    <sec:http pattern="/other/**" security="none"/>
+
+    <sec:http> <!-- (3) -->
+        <sec:form-login /> <!-- (4) -->
+        <sec:logout/> <!-- (5) -->
+    <!--    <sec:access-denied-handler ref="accessDeniedHandler"/> &lt;!&ndash; (6) &ndash;&gt;
+        <sec:custom-filter ref="userIdMDCPutFilter" after="ANONYMOUS_FILTER"/> &lt;!&ndash; (7) &ndash;&gt;-->
+        <sec:session-management/> <!-- (8) -->
+
+        <sec:intercept-url pattern="/show/**" access="permitAll"/>
+
+        <!--<sec:intercept-url pattern="/**" access="isAuthenticated()"/>-->
+        <sec:intercept-url pattern="/**" access="permitAll"/>
+
+
+    </sec:http>
+
+    <sec:authentication-manager/> <!-- (9) -->
+
+<!--    &lt;!&ndash; CSRF Protection &ndash;&gt;
+    <bean id="accessDeniedHandler"
+          class="org.springframework.security.web.access.DelegatingAccessDeniedHandler"> &lt;!&ndash; (10) &ndash;&gt;
+        &lt;!&ndash; omitted &ndash;&gt;
+    </bean>
+
+    &lt;!&ndash; Put UserID into MDC &ndash;&gt;
+    <bean id="userIdMDCPutFilter" class="org.terasoluna.gfw.security.web.logging.UserIdMDCPutFilter">  &lt;!&ndash; (11) &ndash;&gt;
+    </bean>-->
+
+</beans>
