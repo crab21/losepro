@@ -317,13 +317,13 @@
     </dependencies>
     <build>
         <finalName>losepro</finalName>
-        <plugins>
+        <!--<plugins>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.4.8.v20171121</version>
             </plugin>
-        </plugins>
+        </plugins>-->
     </build>
     <properties>
         <spring.version>4.3.0.RELEASE</spring.version>
@@ -341,7 +341,7 @@
     <repositories><!-- 代码库 -->
         <repository>
             <id>maven-ali</id>
-            <url>http://maven.aliyun.com/nexus/content/groups/public//</url>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
