@@ -4,6 +4,7 @@ import mvc.slice.biz.showinfo.ShowInfoService;
 import mvc.slice.common.ConstantNumber;
 import mvc.slice.pojo.BlogBriefInfo;
 import mvc.slice.pojo.paging.PageInfoBean;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,6 +23,8 @@ public class MainPages {
     public PageInfoBean setPageInfoBean() {
         return new PageInfoBean();
     }
+
+    Logger logger = Logger.getLogger(MainPages.class);
 
     /**
      * 注入service类 用于信息的展示
