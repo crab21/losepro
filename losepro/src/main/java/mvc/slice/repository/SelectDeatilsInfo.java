@@ -22,6 +22,8 @@ import java.util.List;
 public interface SelectDeatilsInfo {
     /**
      * 通过id来查找文章
+     *
+     * [table: blog_articleinfo]
      * @param aid
      * @return
      */
@@ -30,12 +32,16 @@ public interface SelectDeatilsInfo {
 
     /**
      * 获取文章的摘要信息
+     *
+     * [table: blog_brief]
      * @return
      */
     List<BlogBriefInfo> findAllInfoBrief(PageInfoBean pageInfoBean);
 
     /**
      * 获取所有文章类型  用于展示主页用
+     *
+     * [table: blog_type]
      * @return
      */
     List<BlogTypeInfo> findArticleType();
@@ -43,6 +49,9 @@ public interface SelectDeatilsInfo {
     /**
      * 通过文章的类型，查询属于某一类的所有信息
      * BlogTypeInfo-->artType
+     *
+     * [table: blog_brief
+     *         blog_type]
      * @param artType
      * @return
      */
@@ -50,6 +59,8 @@ public interface SelectDeatilsInfo {
 
     /**
      * 查找文章id
+     *
+     * [table: blog_type]
      * @param subFormInfo
      * @return
      */
@@ -57,12 +68,16 @@ public interface SelectDeatilsInfo {
 
     /**
      *  查询所有数据的总个数
+     *
+     *  [table: blog_brief]
      * @return
      */
     int selectBlogBriefPage();
 
     /**
      * 通过限制查出来数据的大小
+     *
+     * [table: blog_brief]
      * @param countNumberMain
      * @return
      */
@@ -70,6 +85,9 @@ public interface SelectDeatilsInfo {
 
     /**
      * 通过阅读量 倒叙查询数据
+     *
+     * [table: blog_evaluate
+     *         blog_brief]
      * @param countNumberMain
      * @return
      */
@@ -77,6 +95,10 @@ public interface SelectDeatilsInfo {
 
     /**
      * 通过类型查询总个数
+     *
+     * [table: blog_typearticle
+     *         blog_type
+     *         blog_brief]
      * @param artType
      * @return
      */

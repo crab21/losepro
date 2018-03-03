@@ -18,6 +18,7 @@
     </select>
 
 
+
     <resultMap id="blogBriefInfo" type="BlogBriefInfo">
         <id property="id" column="id"/>
         <result property="artId" column="artId"/>
@@ -62,7 +63,7 @@
     <select id="selectBlogBriefByArtType" parameterType="String" resultType="java.lang.Integer">
        SELECT COUNT(id) AS  total FROM wpy_blog.blog_brief AS a
        INNER JOIN
-       (SELECT artId FROM wpy_blog.blog_typearticle WHERE  typeId=(select Id from wpy_blog.blog_type where artType="jj")) AS b
+       (SELECT artId FROM wpy_blog.blog_typearticle WHERE  typeId=(select Id from wpy_blog.blog_type where artType=#{artType})) AS b
        ON a.artId = b.artId
     </select>
 

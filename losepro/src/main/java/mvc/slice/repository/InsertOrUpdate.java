@@ -16,9 +16,26 @@ import javax.annotation.Resource;
  **/
 @Repository
 public interface InsertOrUpdate {
+
+    /**
+     * 插入文章信息和相对应的类型信息
+     *
+     * [table: blog_articleinfo
+     *         blog_typearticle]
+     * @param blogInfo
+     * @return
+     */
     @Transactional(transactionManager = "transactionManager")
     int insertBlogInfo(SubFormInfo blogInfo);
 
+    /**
+     * 插入文章所对应的类型信息
+     *
+     * [table: blog_type]
+     *
+     * @param subFormInfo
+     * @return
+     */
     @Transactional(transactionManager = "transactionManager")
     int addBlogTypeInfo(SubFormInfo subFormInfo);
 }

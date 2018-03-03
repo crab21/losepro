@@ -13,6 +13,8 @@
     <sec:http pattern="/js/**" security="none"/>
     <sec:http pattern="/other/**" security="none"/>
 
+
+
     <sec:http> <!-- (3) -->
         <sec:form-login /> <!-- (4) -->
         <sec:logout/> <!-- (5) -->
@@ -24,7 +26,7 @@
 
         <!--<sec:intercept-url pattern="/**" access="isAuthenticated()"/>-->
         <sec:intercept-url pattern="/**" access="permitAll"/>
-
+        <sec:csrf disabled="true"/>
 
     </sec:http>
 
