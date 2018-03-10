@@ -4,9 +4,9 @@
             <head>
                 <script src="<%=request.getContextPath()%>/other/md/lib/marked.min.js"></script>
                 <script src="<%=request.getContextPath()%>/other/md/lib/prettify.min.js"></script>
-                <script src="<%=request.getContextPath()%>/js/md/jquery.min.js"></script>
-                <link rel="stylesheet" href="<%=request.getContextPath()%>/css/md/style.css"/>
-                <link rel="stylesheet" href="<%=request.getContextPath()%>/css/md/editormd.preview.css"/>
+                <script src="<%=request.getContextPath()%>/plugin/editorMd/jquery.min.js"></script>
+                <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css"/>
+                <link rel="stylesheet" href="<%=request.getContextPath()%>/css/editormd.preview.css"/>
             </head>
 
             <div class="container">

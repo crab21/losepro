@@ -69,7 +69,7 @@
 
 
 
-<script src="<%=request.getContextPath()%>/js/md/jquery.min.js"></script>
+<script src="<%=request.getContextPath()%>/plugin/editorMd/jquery.min.js"></script>
 <script type="text/javascript">
     $(function () {
         $("#btns").click(function () {
