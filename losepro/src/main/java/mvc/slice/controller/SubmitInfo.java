@@ -4,17 +4,24 @@ import com.google.gson.Gson;
 import mvc.slice.biz.subInfo.SubDeatilsInfo;
 import mvc.slice.controller.basedata.form.SubArticleForm;
 import mvc.slice.controller.basedata.inputInfo.SubFormInfo;
+import org.apache.commons.io.FileUtils;
 import org.dozer.DozerBeanMapper;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -53,4 +60,24 @@ public class SubmitInfo {
         }
         return new Gson().toJson(flag);
     }
+    @RequestMapping(value = "/subImageFile", method = {RequestMethod.POST,RequestMethod.GET},produces = "text/html;charset=UTF-8")
+    public @ResponseBody
+    String Fileupload(@RequestParam("editormd-image-file") MultipartFile multipartFile){
+        File file = new File("f:"+File.separator+multipartFile.getOriginalFilename());
+        try {
+            multipartFile.transferTo(file);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Map map = new HashMap();
+        map.put("success","1");
+        map.put("message","save file in error");
+        map.put("url",file.getAbsolutePath());
+
+
+        return new Gson().toJson(map);
+    }
+
 }

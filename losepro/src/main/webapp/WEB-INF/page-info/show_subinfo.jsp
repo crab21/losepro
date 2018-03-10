@@ -26,7 +26,7 @@
         testEditor = editormd("test-editormd", {
             width: "90%",
             height: 740,
-            path: "<%=request.getContextPath()%>/other/md/lib/",
+            path: "<%=request.getContextPath()%>/staticResource/plugin/editorMd/lib/",
 //            theme: "dark",
 //            previ ewTheme: "dark",
 //            editorTheme: "pastel-on-dark",
@@ -41,9 +41,9 @@
             emoji: true,
             taskList: true,
             tocm: true,         // Using [TOCM]
-            tex: true,                   // 开启科学公式TeX语言支持，默认关闭
-            flowChart: true,             // 开启流程图支持，默认关闭
-            sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+//            tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+//            flowChart: false,             // 开启流程图支持，默认关闭
+//            sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
             //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为true
             //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
             //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为true
@@ -88,6 +88,37 @@
                     alert(data);
                 }
             });
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(function() {
+        var testEditor = editormd("test-editormd", {
+            width: "90%",
+            height: 640,
+            markdown : "",
+            path : '<%=request.getContextPath()%>/staticResource/plugin/editorMd/lib/',
+            //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为 true
+            //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为 true
+            //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为 true
+            //dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为 0.1
+            //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为 #fff
+            imageUpload : true,
+            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "sub/subImageFile",
+            crossDomainUpload : true,
+            uploadCallbackURL : "editorMd/upload_callback.html"
+
+            /*
+             上传的后台只需要返回一个 JSON 数据，结构如下：
+             {
+             success : 0 | 1,           // 0 表示上传失败，1 表示上传成功
+             message : "提示的信息，上传成功或上传失败及错误信息等。",
+             url     : "图片地址"        // 上传成功时才返回
+             }
+             */
         });
     });
 </script>
