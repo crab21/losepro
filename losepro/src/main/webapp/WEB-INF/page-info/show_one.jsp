@@ -2,11 +2,11 @@
 
 
             <head>
-                <script src="<%=request.getContextPath()%>/other/md/lib/marked.min.js"></script>
-                <script src="<%=request.getContextPath()%>/other/md/lib/prettify.min.js"></script>
-                <script src="<%=request.getContextPath()%>/plugin/editorMd/jquery.min.js"></script>
-                <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css"/>
-                <link rel="stylesheet" href="<%=request.getContextPath()%>/css/editormd.preview.css"/>
+                <script src="<%=request.getContextPath()%>/staticResource/plugin/editorMd/lib/marked.min.js"></script>
+                <script src="<%=request.getContextPath()%>/staticResource/plugin/editorMd/lib/prettify.min.js"></script>
+                <script src="<%=request.getContextPath()%>/staticResource/plugin/editorMd/jquery.min.js"></script>
+                <link rel="stylesheet" href="<%=request.getContextPath()%>/staticResource/plugin/editorMd/css/style.css"/>
+                <link rel="stylesheet" href="<%=request.getContextPath()%>/staticResource/plugin/editorMd/css/editormd.preview.css"/>
             </head>
 
             <div class="container">

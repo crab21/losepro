@@ -19,5 +19,5 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/editormd.min.css"/>
-<script src="<%=request.getContextPath()%>/plugin/editorMd/editormd.min.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/staticResource/plugin/editorMd/css/editormd.min.css"/>
+<script src="<%=request.getContextPath()%>/staticResource/plugin/editorMd/editormd.min.js"></script>

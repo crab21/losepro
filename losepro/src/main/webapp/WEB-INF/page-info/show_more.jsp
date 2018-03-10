@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <body>
 
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/blog/showmore.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/staticResource/pageStatic/blog/js/showmore.js"></script>
 <div class="row clearfix">
     <div class="col-md-8 column" style="height: 80%">
         <blockquote>
