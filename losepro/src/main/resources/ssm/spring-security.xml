@@ -13,13 +13,9 @@
     <sec:http pattern="/js/**" security="none"/>
     <sec:http pattern="/other/**" security="none"/>
 
-
-
     <sec:http> <!-- (3) -->
         <sec:form-login /> <!-- (4) -->
         <sec:logout/> <!-- (5) -->
-    <!--    <sec:access-denied-handler ref="accessDeniedHandler"/> &lt;!&ndash; (6) &ndash;&gt;
-        <sec:custom-filter ref="userIdMDCPutFilter" after="ANONYMOUS_FILTER"/> &lt;!&ndash; (7) &ndash;&gt;-->
         <sec:session-management/> <!-- (8) -->
 
         <sec:intercept-url pattern="/show/**" access="permitAll"/>
@@ -31,15 +27,5 @@
     </sec:http>
 
     <sec:authentication-manager/> <!-- (9) -->
-
-<!--    &lt;!&ndash; CSRF Protection &ndash;&gt;
-    <bean id="accessDeniedHandler"
-          class="org.springframework.security.web.access.DelegatingAccessDeniedHandler"> &lt;!&ndash; (10) &ndash;&gt;
-        &lt;!&ndash; omitted &ndash;&gt;
-    </bean>
-
-    &lt;!&ndash; Put UserID into MDC &ndash;&gt;
-    <bean id="userIdMDCPutFilter" class="org.terasoluna.gfw.security.web.logging.UserIdMDCPutFilter">  &lt;!&ndash; (11) &ndash;&gt;
-    </bean>-->
 
 </beans>

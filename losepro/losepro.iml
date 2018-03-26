@@ -83,15 +83,6 @@
     <orderEntry type="library" name="Maven: redis.clients:jedis:2.8.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.3" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:druid:1.0.24" level="project" />
-    <orderEntry type="module-library">
-      <library name="Maven: com.alibaba:tools:1.6.0">
-        <CLASSES>
-          <root url="jar://E:/software/Java/jdk1.8.0_161/lib/tools.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-validator:5.2.1.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.2.1.Final" level="project" />
