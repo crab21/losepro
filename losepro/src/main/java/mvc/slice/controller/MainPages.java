@@ -79,9 +79,7 @@ public class MainPages {
     public String showmores(Model model, @ModelAttribute PageInfoBean pageInfoBean) {
         //todo 分页中动态展示的页数
         pageInfoBean.setShowSize(6);
-
         List<BlogBriefInfo> blogBriefInfo = showInfoService.findAllInfo(pageInfoBean);
-
         return new MainPagesHelper().showmores(model, blogBriefInfo, pageInfoBean, showInfoService);
     }
 

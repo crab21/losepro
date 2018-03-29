@@ -38,7 +38,6 @@ public class SubmitInfo {
     @Inject
     SubDeatilsInfo subDeatilsInfo;
 
-
     /**
      * @param subArticleForm
      * @param
@@ -75,8 +74,6 @@ public class SubmitInfo {
         map.put("success","1");
         map.put("message","save file in error");
         map.put("url",file.getAbsolutePath());
-
-
         return new Gson().toJson(map);
     }
 
