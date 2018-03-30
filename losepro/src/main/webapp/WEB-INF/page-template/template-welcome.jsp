@@ -33,7 +33,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">查看分类<strong
                                     class="caret"></strong></a>
-                            <ul class="dropdown-menu" id="type">
+                            <ul class="dropdown-menu" id="type" style="text-align: center">
 
                             </ul>
                         </li>

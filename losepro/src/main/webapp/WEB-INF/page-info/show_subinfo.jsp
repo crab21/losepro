@@ -1,22 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 
 
-<%--
-<br><br><br>
-
-<div class="container">
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <form role="form">
-                <div class="form-group">
-                    </label><input type="text" class="form-control" id="articletitle"  placeholder="请输入标题"/>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
---%>
-
 <script type="text/javascript">
     //    调用编辑器
     var testEditor;

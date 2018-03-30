@@ -44,7 +44,7 @@
     <div class="col-md-4 column">
         <div class="row clearfix">
             <div class="col-md-6 column">
-                <img alt="140x140" src="v3/default3.jpg" class="img-thumbnail"/>
+                <img alt="140x140" src="" class="img-thumbnail"/>
             </div>
             <div class="col-md-6 column">
                 <address><strong>Twitter, Inc.</strong><br/> 795 Folsom Ave, Suite 600<br/> San Francisco,
