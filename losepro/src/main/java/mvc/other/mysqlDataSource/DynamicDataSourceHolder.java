@@ -1,4 +1,4 @@
-package mvc.other;
+package mvc.other.mysqlDataSource;
 
 /**
  * 使用ThreadLocal技术来记录当前线程中的数据源的key

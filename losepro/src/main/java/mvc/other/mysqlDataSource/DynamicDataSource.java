@@ -1,4 +1,4 @@
-package mvc.other;
+package mvc.other.mysqlDataSource;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

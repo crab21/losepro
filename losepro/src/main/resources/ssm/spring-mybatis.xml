@@ -22,7 +22,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 
     <mybatis:scan base-package="mvc.slice.repository"/>
     <import resource="sm-one.xml"/>
-    <bean class="mvc.other.DataSourceAspect" id="dataSourceAspect"/>
+    <bean class="mvc.other.mysqlDataSource.DataSourceAspect" id="dataSourceAspect"/>
     <aop:config>
         <!-- 定义切面，所有的service的所有方法 -->
         <aop:pointcut id="txPointcut" expression="execution(* mvc.slice.repository.*.*(..))" />
