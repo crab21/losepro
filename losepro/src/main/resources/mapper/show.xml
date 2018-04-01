@@ -5,6 +5,8 @@
     <!--开启二级缓存   -->
     <!--<cache readOnly="true" eviction="WEAK"/>-->
 
+    <!--开启redis二级缓存-->
+    <cache type="mvc.other.redis.RedisCache"/>
     <resultMap id="blogArtInfo" type="BlogArticleInfo">
         <id property="id" column="id"/>
         <result property="artId" column="artId"/>
