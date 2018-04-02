@@ -8,9 +8,9 @@ import redis.clients.jedis.JedisPoolConfig;
  * Created by k on 2018/4/1.
  */
 public class JedisUtil {
-    private static String	hostName	= "127.0.0.1";
+    private static String	hostName	= "119.28.86.177";
     private static int		port		= 6379;
-    private static String	password	= "";
+    private static String	password	= "wpy@123";
 
     private static int	MaxTotal						= 300;
     private static int	MaxIdle							= 50;
@@ -66,5 +66,9 @@ public class JedisUtil {
         if (jedis != null) {
             jedisPool.close();
         }
+    }
+
+    public static void main(String[] args) {
+       getJedis();
     }
 }

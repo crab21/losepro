@@ -15,7 +15,7 @@
         <result property="artTime" column="artTime"/>
     </resultMap>
 
-    <select id="findBlogInfoByAid" parameterType="String" resultType="BlogArticleInfo" useCache="false">
+    <select id="findBlogInfoByAid" parameterType="String" resultType="BlogArticleInfo">
         SELECT  * FROM blog_articleinfo WHERE artId=#{aid};
     </select>
 
@@ -29,7 +29,7 @@
         <result property="artTime" column="artTime"/>
     </resultMap>
 
-    <select id="findAllInfoBrief" resultMap="blogBriefInfo" useCache="false" parameterType="PageInfoBean">
+    <select id="findAllInfoBrief" resultMap="blogBriefInfo" parameterType="PageInfoBean">
         SELECT * FROM blog_brief WHERE
         <if test="pageFlag==0">
             id &lt; #{pageForeId} ORDER BY id DESC limit #{pageSize};
@@ -82,7 +82,7 @@
         </if>
     </select>
 
-    <select id="selectBlogTypeId" parameterType="SubFormInfo" resultMap="blogType" useCache="false">
+    <select id="selectBlogTypeId" parameterType="SubFormInfo" resultMap="blogType" >
         SELECT * FROM blog_type WHERE artType=#{artType}
     </select>
 

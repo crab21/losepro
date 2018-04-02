@@ -1,5 +1,6 @@
 package mvc.slice.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
  * @author
  * @create 2017-12-22 12:19 AM
  **/
-public class BlogEvaluate {
+public class BlogEvaluate implements Serializable {
     /**
      * 序号
      */

@@ -1,6 +1,7 @@
 package mvc.other.redis;
 
 import org.apache.ibatis.cache.Cache;
+
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -12,7 +13,7 @@ public class RedisCache implements Cache {
 
     private String id;
 
-    public RedisCache( final String id ) {
+    public RedisCache(final String id) {
         if (id == null) {
             throw new IllegalArgumentException("Cache instances require an ID");
         }
@@ -24,18 +25,23 @@ public class RedisCache implements Cache {
         return id;
     }
 
-    public void putObject( Object key , Object value ) {
+    public void putObject(Object key, Object value) {
         JedisUtil.getJedis().set(SerializeUtil.serialize(key.toString()), SerializeUtil.serialize(value));
 
     }
 
-    public Object getObject( Object key ) {
-        Object value = SerializeUtil.unserialize(JedisUtil.getJedis().get(SerializeUtil.serialize(key.toString())));
-        return value;
+    public Object getObject(Object key) {
+        if (JedisUtil.getJedis() == null) {
+            return null;
+        } else {
+            Object value = SerializeUtil.unserialize(JedisUtil.getJedis().get(SerializeUtil.serialize(key.toString())));
+            return value;
+
+        }
 
     }
 
-    public Object removeObject( Object key ) {
+    public Object removeObject(Object key) {
         return JedisUtil.getJedis().expire(SerializeUtil.serialize(key.toString()), 0);
 
     }
