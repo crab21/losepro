@@ -1,6 +1,8 @@
 package mvc.slice.pojo.paging;
 
-public class PageInfoBean {
+import java.io.Serializable;
+
+public class PageInfoBean implements Serializable {
     /*总页数*/
     private int total;
 
