@@ -7,7 +7,7 @@
     <!--<cache readOnly="true" eviction="WEAK"/>-->
 
     <!--开启redis二级缓存-->
-    <cache type="mvc.other.redis.RedisCache"/>
+    <!--<cache type="mvc.other.redis.RedisCache"/>-->
 
     <!--<resultMap id="subFormInfo" type="SubFormInfo">
         <id property="id" column="id"/>
