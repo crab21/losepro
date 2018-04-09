@@ -15,4 +15,16 @@
    <definition name="*" extends="default">
       <put-attribute name="body" value="/WEB-INF/page-info/{1}.jsp"/>
    </definition>
+
+
+   <definition name="defaultTwo" template="/WEB-INF/page-template/template-welcome-none.jsp">
+      <put-attribute name="title" value="/WEB-INF/page-common/title.jsp"/>
+      <put-attribute name="header" value="/WEB-INF/page-common/header.jsp"/>
+      <put-attribute name="body" value="" />
+   </definition>
+
+
+   <definition name="*/loginpage" extends="defaultTwo">
+      <put-attribute name="body" value="/WEB-INF/page-info/loginpage.jsp"/>
+   </definition>
 </tiles-definitions>
