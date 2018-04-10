@@ -24,7 +24,7 @@
    </definition>
 
 
-   <definition name="*/loginpage" extends="defaultTwo">
+   <definition name="show/loginpage" extends="defaultTwo">
       <put-attribute name="body" value="/WEB-INF/page-info/loginpage.jsp"/>
    </definition>
 </tiles-definitions>

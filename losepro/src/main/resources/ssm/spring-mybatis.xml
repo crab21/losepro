@@ -34,4 +34,6 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
             <aop:before method="before" pointcut-ref="txPointcut" />
         </aop:aspect>
     </aop:config>
+
+    <bean id="accountUserDetailService" class="mvc.slice.controller.login.AccountUserDetailService"/>
 </beans>

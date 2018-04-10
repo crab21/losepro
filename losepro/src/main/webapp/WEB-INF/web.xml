@@ -57,6 +57,11 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>  <!-- (4) -->
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/authenticate</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
 
 
 

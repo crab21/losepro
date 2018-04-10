@@ -14,10 +14,12 @@
     <sec:http pattern="/other/**" security="none"/>
 
     <sec:http> <!-- (3) -->
-        <sec:form-login login-page="/loginpage" login-processing-url="/login"/> <!-- (4) -->
+        <sec:form-login login-page="/loginpage" login-processing-url="/authenticate" /> <!-- (4) -->
         <sec:logout/> <!-- (5) -->
         <sec:session-management/> <!-- (8) -->
         <sec:intercept-url pattern="/loginpage" access="permitAll"/>
+        <sec:intercept-url pattern="/login" access="permitAll"/>
+
         <sec:intercept-url pattern="/show/**" access="isAuthenticated()"/>
 
         <sec:intercept-url pattern="/**" access="isAuthenticated()"/>
@@ -26,6 +28,14 @@
 
     </sec:http>
 
-    <sec:authentication-manager/> <!-- (9) -->
+    <sec:authentication-manager>
 
+        <sec:authentication-provider user-service-ref="accountUserDetailService">
+            <sec:password-encoder ref="passwordEncoder" hash="bcrypt"></sec:password-encoder>
+
+        </sec:authentication-provider>
+    </sec:authentication-manager> <!-- (9) -->
+
+    <bean id="passwordEncoder"
+          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 </beans>
