@@ -36,7 +36,7 @@
             id &lt; #{pageForeId} ORDER BY id DESC limit #{pageSize};
         </if>
         <if test="pageFlag!=0">
-            id &gt; #{pageLastId} ORDER BY id limit #{pageSize};
+            id &gt; #{pageLastId} ORDER BY id  limit #{pageSize};
         </if>
     </select>
 

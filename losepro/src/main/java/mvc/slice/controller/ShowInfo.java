@@ -80,6 +80,7 @@ public class ShowInfo {
     public String findTypeById(@RequestParam("artType") String artType, Model model) {
         PageInfoBean page = new PageInfoBean();
         List<BlogBriefInfo> blogBriefInfo = showInfoService.findOneTypeInfo(artType, page);
+        model.addAttribute("artType", artType);
         model.addAttribute("blogBriefInfo", blogBriefInfo);
         model.addAttribute("page", page);
         return "show_more";

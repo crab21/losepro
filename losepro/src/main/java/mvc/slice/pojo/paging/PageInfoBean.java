@@ -24,6 +24,16 @@ public class PageInfoBean implements Serializable {
     /*中间展示的个数*/
     private int showSize;
 
+    private String artType;
+
+    public String getArtType() {
+        return artType;
+    }
+
+    public void setArtType(String artType) {
+        this.artType = artType;
+    }
+
     public int getPageNumber() {
         return pageNumber;
     }

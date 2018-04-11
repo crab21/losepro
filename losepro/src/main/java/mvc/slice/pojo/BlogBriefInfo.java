@@ -30,16 +30,21 @@ public class BlogBriefInfo implements Serializable {
      *  摘要的创建时间
      */
     private Date artTime;
+    /**
+     *  文章类型
+     */
+    private String artType;
 
     public BlogBriefInfo() {
     }
 
-    public BlogBriefInfo(int id, String artId, String artTitle, String artBrief, Date artTime) {
+    public BlogBriefInfo(int id, String artId, String artTitle, String artBrief, Date artTime, String artType) {
         this.id = id;
         this.artId = artId;
         this.artTitle = artTitle;
         this.artBrief = artBrief;
         this.artTime = artTime;
+        this.artType = artType;
     }
 
     public int getId() {
@@ -80,5 +85,13 @@ public class BlogBriefInfo implements Serializable {
 
     public void setArtTime(Date artTime) {
         this.artTime = artTime;
+    }
+
+    public String getArtType() {
+        return artType;
+    }
+
+    public void setArtType(String artType) {
+        this.artType = artType;
     }
 }

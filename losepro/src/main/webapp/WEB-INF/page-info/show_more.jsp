@@ -29,15 +29,17 @@
             <input type="hidden" value="${fn:length(blogBriefInfo)}" id="blogSize"/>
             <input type="hidden" value="${page.pageNumber}" id="pageNumber">
             <input type="hidden" value="${page.total}" id="pageTotal">
+            <input type="hidden" value="${artType}" id="artType" name="artType">
+
             <a href="<%=request.getContextPath()%>/showmore">首页</a>
             <c:set var="pageFlagBef" scope="page" value="0"/>
-            <a href="<%=request.getContextPath()%>/showmore?pageFlag=${pageFlagBef}&pageForeId=${blogBriefInfo[0].id}&pageNumber=${page.pageNumber-1}" id="beforePage">上一页</a>
+            <a href="<%=request.getContextPath()%>/showmore?pageFlag=${pageFlagBef}&pageForeId=${blogBriefInfo[0].id}&pageNumber=${page.pageNumber-1}&artType=${artType}" id="beforePage">上一页</a>
 
             <%--todo 有待处理的页数 --%>
 
             <c:set var="pageFlagNext" scope="page" value="1"/>
             <c:set var="nextPageId" scope="page" value="${fn:length(blogBriefInfo)}"/>
-            <a href="<%=request.getContextPath()%>/showmore?pageFlag=${pageFlagNext}&pageLastId=${blogBriefInfo[nextPageId-1].id}&pageNumber=${page.pageNumber+1}"
+            <a href="<%=request.getContextPath()%>/showmore?pageFlag=${pageFlagNext}&pageLastId=${blogBriefInfo[nextPageId-1].id}&pageNumber=${page.pageNumber+1}&artType=${artType}"
                id="nextPage">下一页</a>
             <a href="">尾页</a>
         </div>

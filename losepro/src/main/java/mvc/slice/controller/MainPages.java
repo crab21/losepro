@@ -4,11 +4,13 @@ import mvc.slice.biz.showinfo.ShowInfoService;
 import mvc.slice.common.ConstantNumber;
 import mvc.slice.pojo.BlogBriefInfo;
 import mvc.slice.pojo.paging.PageInfoBean;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -76,10 +78,10 @@ public class MainPages {
      * @return
      */
     @RequestMapping(value = "/showmore", params = "pageFlag")
-    public String showmores(Model model, @ModelAttribute PageInfoBean pageInfoBean) {
+    public String showmores(Model model, @ModelAttribute PageInfoBean pageInfoBean, @RequestParam("artType") String artType) {
         //todo 分页中动态展示的页数
         pageInfoBean.setShowSize(6);
-        List<BlogBriefInfo> blogBriefInfo = showInfoService.findAllInfo(pageInfoBean);
+        List<BlogBriefInfo> blogBriefInfo = StringUtils.isBlank(artType)?showInfoService.findAllInfo(pageInfoBean):showInfoService.findOneTypeInfo(artType,pageInfoBean);
         return new MainPagesHelper().showmores(model, blogBriefInfo, pageInfoBean, showInfoService);
     }
 

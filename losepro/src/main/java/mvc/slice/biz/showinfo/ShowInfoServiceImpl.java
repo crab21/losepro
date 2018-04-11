@@ -56,6 +56,7 @@ public class ShowInfoServiceImpl implements ShowInfoService {
         }else{
             pageInfoBean.setTotal(pageTotal/pageInfoBean.getPageSize()+1);
         }
+
         return selectDeatilsInfo.selectBlogBriefByOneType(artType, pageInfoBean);
     }
 
