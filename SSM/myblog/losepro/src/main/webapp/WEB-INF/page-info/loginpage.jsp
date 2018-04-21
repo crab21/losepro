@@ -14,7 +14,7 @@
     <br>
     <div class="col-md-12" style="text-align:center"><h2>用户登陆界面</h2></div>
     <br>
-    <form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/login" method="post">
+    <form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/login" id="form1" method="post">
         <div class="form-group">
             <label class="col-sm-4 control-label">用户名：</label>
             <div class="col-sm-5">
@@ -29,14 +29,19 @@
         </div>
         <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
         <div class="col-md-6" style="text-align:right">
-            <input type="submit" class="btn btn-primary">原始按钮</input>
+            <button type="button" class="btn btn-primary" id="loginIn">登陆</button>
         </div>
         <div class="col-md-6" style="text-align:left">
-            <button type="button" class="btn btn-success">成功按钮</button>
+            <button type="button" class="btn btn-success" id="resetIn">重置</button>
         </div>
-
-
         <!-- 表示一个成功的或积极的动作 -->
 
     </form>
+    <script type="text/javascript">
+        $(function () {
+            $("#loginIn").click(function () {
+                $("#form1").submit();
+            });
+        });
+    </script>
 </div>

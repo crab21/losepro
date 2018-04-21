@@ -302,8 +302,12 @@
             <version>0.4.8</version>
         </dependency>
 
-
-
+        <!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1</version>
+        </dependency>
 
         <!--jetty-->
         <dependency>
@@ -321,11 +325,7 @@
             <artifactId>jetty-webapp</artifactId>
             <version>9.4.8.v20171121</version>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-jsp</artifactId>
-            <version>9.2.23.v20171218</version>
-        </dependency>
+
 
     </dependencies>
     <build>
@@ -337,6 +337,28 @@
                 <version>9.4.8.v20171121</version>
             </plugin>
         </plugins>-->
+
+        <plugins>
+            <!-- Config: Maven Jetty Plugin -->
+            <!-- http://mvnrepository.com/artifact/org.mortbay.jetty/jetty-maven-plugin -->
+            <!-- http://www.eclipse.org/jetty/documentation/current/jetty-maven-plugin.html -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.3.v20170317</version>
+                <!-- Config: contextPath and Port (Default:8080) -->
+                <!--
+                <configuration>
+                    <httpConnector>
+                        <port>8899</port>
+                    </httpConnector>
+                    <webAppConfig>
+                        <contextPath>/</contextPath>
+                    </webAppConfig>
+                </configuration>
+                 -->
+            </plugin>
+        </plugins>
     </build>
     <properties>
         <spring.version>4.3.0.RELEASE</spring.version>
@@ -367,4 +389,6 @@
             </snapshots>
         </repository>
     </repositories>
+
+
 </project>
