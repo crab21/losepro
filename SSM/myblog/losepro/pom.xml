@@ -339,24 +339,19 @@
         </plugins>-->
 
         <plugins>
-            <!-- Config: Maven Jetty Plugin -->
-            <!-- http://mvnrepository.com/artifact/org.mortbay.jetty/jetty-maven-plugin -->
-            <!-- http://www.eclipse.org/jetty/documentation/current/jetty-maven-plugin.html -->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.4.3.v20170317</version>
                 <!-- Config: contextPath and Port (Default:8080) -->
-                <!--
                 <configuration>
                     <httpConnector>
                         <port>8899</port>
                     </httpConnector>
                     <webAppConfig>
-                        <contextPath>/</contextPath>
+                        <contextPath>/losepro</contextPath>
                     </webAppConfig>
                 </configuration>
-                 -->
             </plugin>
         </plugins>
     </build>
