@@ -25,7 +25,7 @@
 
             <c:forEach items="${briefInfo}" var="briefInfoOne">
                 <div class="panel-footer">
-                <a href="#">${briefInfoOne.artTitle}</a>
+                <a href="<%=request.getContextPath()%>/show/${briefInfoOne.artId}" style="text-decoration:none">${briefInfoOne.artTitle}</a>
                 </div>
             </c:forEach>
         </div>
@@ -41,7 +41,7 @@
 
             <c:forEach items="${briefInfoOfEvalReadNum}" var="briefInfoOne">
                 <div class="panel-footer">
-                    <a href="#">${briefInfoOne.artTitle} &nbsp;&nbsp;&nbsp;</a>
+                    <a href="<%=request.getContextPath()%>/show/${briefInfoOne.artId}" style="text-decoration:none">${briefInfoOne.artTitle} &nbsp;&nbsp;&nbsp;</a>
                 </div>
             </c:forEach>
         </div>
