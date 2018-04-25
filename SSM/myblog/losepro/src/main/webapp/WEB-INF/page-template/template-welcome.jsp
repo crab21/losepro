@@ -46,7 +46,7 @@
                     </form>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">登录/注册</a>
+                            <a href="<%=request.getContextPath()%>/loginpage>">登录/注册</a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">我的<strong class="caret"></strong></a>

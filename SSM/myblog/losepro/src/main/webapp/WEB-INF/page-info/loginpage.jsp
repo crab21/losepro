@@ -32,7 +32,7 @@
             <button type="button" class="btn btn-primary" id="loginIn">登陆</button>
         </div>
         <div class="col-md-6" style="text-align:left">
-            <button type="button" class="btn btn-success" id="resetIn">重置</button>
+            <button type="button" class="btn btn-success" id="resetIn">注册</button>
         </div>
         <!-- 表示一个成功的或积极的动作 -->
 

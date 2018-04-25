@@ -15,23 +15,22 @@
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
                         http://mybatis.org/schema/mybatis-spring
                         http://mybatis.org/schema/mybatis-spring.xsd
-
- http://www.springframework.org/schema/tx
- http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
-http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+                         http://www.springframework.org/schema/tx
+                         http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+                        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
     <mybatis:scan base-package="mvc.slice.repository"/>
     <import resource="sm-one.xml"/>
     <bean class="mvc.other.mysqlDataSource.DataSourceAspect" id="dataSourceAspect"/>
     <aop:config>
         <!-- 定义切面，所有的service的所有方法 -->
-        <aop:pointcut id="txPointcut" expression="execution(* mvc.slice.repository.*.*(..))" />
+        <aop:pointcut id="txPointcut" expression="execution(* mvc.slice.repository.*.*(..))"/>
         <!-- 应用事务策略到Service切面 -->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
 
         <!-- 将切面应用到自定义的切面处理器上，-9999保证该切面优先级最高执行 -->
         <aop:aspect ref="dataSourceAspect" order="-9999">
-            <aop:before method="before" pointcut-ref="txPointcut" />
+            <aop:before method="before" pointcut-ref="txPointcut"/>
         </aop:aspect>
     </aop:config>
 
