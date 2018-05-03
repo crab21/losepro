@@ -5,11 +5,11 @@ import com.rabbitmq.client.*;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class Work {
+public class Work2 {
     private final static String QUEUE_NAME = "gg";
 
     public static void main(String[] args) {
-        test3();
+        test2();
     }
 
 
@@ -33,18 +33,6 @@ public class Work {
                     System.out.println("[x]receiverd message:" + message);
                 }
             });
-
-            Channel channel1 = connection.createChannel();
-            channel1.exchangeDeclare("dd","fanout");
-            String queueName2 = channel1.queueDeclare().getQueue();
-            channel.queueBind(queueName2,"dd","");
-            channel1.basicConsume(queueName2,true,new DefaultConsumer(channel1){
-                @Override
-                public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
-                    String message = new String(body, "UTF-8");
-                    System.out.println("[y]received message:"+message);
-                }
-            });
         } catch (IOException e) {
             e.printStackTrace();
         } catch (TimeoutException e) {
@@ -56,7 +44,7 @@ public class Work {
      * 工作队列
      */
     public static void test2() {
-        int hashCode = Work.class.hashCode();
+        int hashCode = Work2.class.hashCode();
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("127.0.0.1");
         try {
@@ -103,7 +91,7 @@ public class Work {
     }
 
     public void test1() {
-        int hashCode = Work.class.hashCode();
+        int hashCode = Work2.class.hashCode();
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("127.0.0.1");
         try {

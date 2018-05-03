@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.IOException;
 import java.util.Date;
 import java.util.concurrent.TimeoutException;
+
 @Configuration()
 public class NewTask {
     private static final String QUENUE_NAME = "gg";
@@ -13,7 +14,6 @@ public class NewTask {
     public static void main(String[] args) {
         test2();
     }
-
 
 
     /**
@@ -27,9 +27,16 @@ public class NewTask {
             Channel channel = connection.createChannel();
             channel.exchangeDeclare(QUENUE_NAME, "fanout");
             String message = new Date().toString() + ":long something ----";
-            channel.basicPublish(QUENUE_NAME, "", null, message.getBytes());
+            channel.basicPublish(QUENUE_NAME, "", MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes());
+
+
+            Channel channel1 = connection.createChannel();
+            channel1.exchangeDeclare("dd", "fanout");
+            String message1= new Date().toString() + "+++++++++++++++++++";
+            channel1.basicPublish("dd", "", MessageProperties.PERSISTENT_TEXT_PLAIN, message1.getBytes());
             System.out.println("[x] send message:" + message);
 
+            channel1.close();
             channel.close();
             connection.close();
         } catch (IOException e) {
@@ -42,7 +49,7 @@ public class NewTask {
     /**
      * 工作队列模式
      */
-    public void test1() {
+    public static void test1() {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("127.0.0.1");
         try {
