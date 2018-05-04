@@ -3,13 +3,49 @@ package RabbitMq;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.concurrent.TimeoutException;
 
-public class Work2 {
+public class Work2 implements Runnable{
     private final static String QUEUE_NAME = "gg";
+    private static final String EXCHANGE_NAME = "ex_log_pro";
+    private static final String[] SEVERITIES = {"info", "warning", "error"};
 
     public static void main(String[] args) {
         test2();
+    }
+
+
+    public static void test4() {
+        ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost("127.0.0.1");
+        try {
+            Channel channel = factory.newConnection().createChannel();
+            channel.exchangeDeclare(EXCHANGE_NAME, "direct");
+            String queueName = channel.queueDeclare().getQueue();
+            String routKey = getRoutKey();
+            channel.queueBind(queueName, EXCHANGE_NAME, "error");
+
+            channel.basicConsume(queueName, false, new DefaultConsumer(channel) {
+                @Override
+                public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                    String message = new String(body);
+                    System.out.println(message);
+                    channel.basicAck(envelope.getDeliveryTag(), false);
+
+                }
+
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+    }
+    private static String getRoutKey() {
+        Random random = new Random();
+        int ranval = random.nextInt(3);
+        return SEVERITIES[ranval];
     }
 
 
@@ -64,14 +100,14 @@ public class Work2 {
                     } catch (Exception e) {
                         e.printStackTrace();
                     } finally {
-                        System.out.println("[x] done");
+                        System.out.println("[x] -------确认接收"+message);
                         //手动发送一次应答反馈
-                        /*channel.basicAck(envelope.getDeliveryTag(), false);*/
+                        channel.basicAck(envelope.getDeliveryTag(), false);
                     }
                 }
             };
             //打开应答机制
-            boolean autoAck = true;
+            boolean autoAck = false;
             channel.basicConsume(QUEUE_NAME, autoAck, consumer);
 
 
@@ -116,5 +152,10 @@ public class Work2 {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void run() {
+        test2();
     }
 }
