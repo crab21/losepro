@@ -14,8 +14,20 @@ spring:
     view:
       prefix: classpath:templates/views
       suffix: .html
+  mail:
+    port: 25
+    protocol: smtp
+    host: smtp.chengmail.cn
+    username: pywang@dhlk-tech.com
+    password: wangpeiyuan12345!
+    default-encoding: utf-8
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.timeout: 25000
+  aop:
+    proxy-target-class: true
+
 mybatis:
   mapper-locations: mapper/*Mapper.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-

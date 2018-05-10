@@ -1,4 +1,4 @@
-package com.example.combinerabbit.plugin.rabbitmq;
+package com.example.combinerabbit.config.rabbitmq;
 
 import com.example.combinerabbit.Service.UserServiceImpl;
 import com.example.combinerabbit.model.Users;
@@ -43,6 +43,7 @@ public class RabbitConsumer {
                 System.out.println(">>>>>>>>>>");
                 channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
 
+//                Thread.sleep(5000);
                 System.out.println("a ------ fan kui cheng gong");
             }
         });
@@ -66,6 +67,7 @@ public class RabbitConsumer {
                 System.out.println(">>>>>>>>>>");
                 channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
                 System.out.println("b ------ fan kui cheng gong");
+//                Thread.sleep(5000);
             }
         });
         return container;

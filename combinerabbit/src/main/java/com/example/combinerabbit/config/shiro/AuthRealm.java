@@ -1,7 +1,6 @@
-package com.example.combinerabbit.plugin.shiro;
+package com.example.combinerabbit.config.shiro;
 
 import com.example.combinerabbit.Service.ShiroServiceImpl;
-import com.example.combinerabbit.mapper.ShiroMapper;
 import com.example.combinerabbit.model.Module;
 import com.example.combinerabbit.model.Role;
 import com.example.combinerabbit.model.User;
@@ -31,6 +30,7 @@ public class AuthRealm extends AuthorizingRealm {
                 Set<Module> modules = role.getModules();
                 if (modules.size() > 0) {
                     for (Module module : modules) {
+                        System.out.println(module.getMname()+">>>>>>>>>>>>>>>>>");
                         permissions.add(module.getMname());
                     }
                 }

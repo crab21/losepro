@@ -1,4 +1,4 @@
-package com.example.combinerabbit.plugin.shiro;
+package com.example.combinerabbit.config.shiro;
 
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -9,9 +9,10 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.apache.shiro.mgt.*;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Configuration
 public class ShiroConfiguration {
@@ -25,11 +26,15 @@ public class ShiroConfiguration {
         linkedHashMap.put("/loginUser", "anon");
         linkedHashMap.put("/logout*", "anon");
         linkedHashMap.put("/shirowel", "anon");
+        linkedHashMap.put("/msend", "anon");
         linkedHashMap.put("/wells","anon");
         linkedHashMap.put("/*", "authc");//表示需要认证才可以访问
         linkedHashMap.put("/**", "authc");//表示需要认证才可以访问
         linkedHashMap.put("/*.*", "authc");
         bean.setFilterChainDefinitionMap(linkedHashMap);
+        Map map = new HashMap();
+        map.put("authc", new MyFormAuthentication());
+        bean.setFilters(map);
         return bean;
     }
 
@@ -74,4 +79,6 @@ public class ShiroConfiguration {
         advisor.setSecurityManager(manager);
         return advisor;
     }
+
+
 }

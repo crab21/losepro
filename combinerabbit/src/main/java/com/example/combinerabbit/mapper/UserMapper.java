@@ -1,25 +1,27 @@
 package com.example.combinerabbit.mapper;
 
-import com.example.combinerabbit.model.Role;
-import com.example.combinerabbit.model.User;
 import com.example.combinerabbit.model.Users;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Mapper
 @Repository
 @Transactional
 public interface UserMapper {
 
-    @Select("select * from user")
+    @Select("select * from rabb")
     List<Users> findAllUser();
 
-    @Insert("insert into user values(#{i}, #{name})")
+    @Insert("insert into rabb values(#{i}, #{name})")
     void insert(@Param("i") int i, @Param("name") String name1);
 
-    @Insert("insert into user_second values(#{i}, #{name})")
+    @Insert("insert into rabb_second values(#{i}, #{name})")
     void inserts(@Param("i") int i, @Param("name") String name1, boolean b);
 
 /*

@@ -1,4 +1,4 @@
-package com.example.combinerabbit.plugin.rabbitmq;
+package com.example.combinerabbit.config.rabbitmq;
 
 import com.example.combinerabbit.Service.UserServiceImpl;
 import com.example.combinerabbit.model.Users;
@@ -7,7 +7,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class RabbitSender implements RabbitTemplate.ConfirmCallback{
 
     public void sender(){
         List<Users> update = userService.update();
-        rabbitTemplate.setConfirmCallback(this);
+//        rabbitTemplate.setConfirmCallback(this);
         rabbitTemplate.convertAndSend("mysql_usera", gson.toJson(update));
         rabbitTemplate.setReceiveTimeout(10000);
         System.out.println("[x] send:----"+gson.toJson(update));

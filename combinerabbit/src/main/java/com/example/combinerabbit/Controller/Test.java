@@ -1,9 +1,9 @@
 package com.example.combinerabbit.Controller;
 
 import com.example.combinerabbit.Service.UserServiceImpl;
-import com.example.combinerabbit.plugin.rabbitmq.RabbitSender;
+import com.example.combinerabbit.config.rabbitmq.RabbitSender;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,11 +51,14 @@ public class Test {
         System.out.println("执行完成");
         return "ok";
     }
-
+    @RequiresPermissions("update")
     @RequestMapping("/rabb")
     @ResponseBody
-    public String test2(){
-        rabbitSender.sender();
+    public String test2() {
+/*        for (int i = 0; i < 10000; ++i) {
+
+            rabbitSender.sender();
+        }*/
         return "ok";
     }
 }

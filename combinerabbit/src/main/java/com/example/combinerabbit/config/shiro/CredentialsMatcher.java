@@ -1,4 +1,4 @@
-package com.example.combinerabbit.plugin.shiro;
+package com.example.combinerabbit.config.shiro;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
