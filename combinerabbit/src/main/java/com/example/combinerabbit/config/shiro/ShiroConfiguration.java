@@ -20,14 +20,14 @@ public class ShiroConfiguration {
     ShiroFilterFactoryBean shiroFilterFactoryBean(@Qualifier("securityManager") SecurityManager manager) {
         ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
         bean.setSecurityManager(manager);
-        bean.setLoginUrl("/login");
+        bean.setLoginUrl("/shirowel");
         bean.setSuccessUrl("/home");
         LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
-        linkedHashMap.put("/loginUser", "anon");
+        linkedHashMap.put("/login", "anon");
         linkedHashMap.put("/logout*", "anon");
         linkedHashMap.put("/shirowel", "anon");
         linkedHashMap.put("/msend", "anon");
-        linkedHashMap.put("/wells","anon");
+        linkedHashMap.put("/wells", "anon");
         linkedHashMap.put("/*", "authc");//表示需要认证才可以访问
         linkedHashMap.put("/**", "authc");//表示需要认证才可以访问
         linkedHashMap.put("/*.*", "authc");

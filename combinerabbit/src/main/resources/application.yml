@@ -29,5 +29,3 @@ spring:
 
 mybatis:
   mapper-locations: mapper/*Mapper.xml
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

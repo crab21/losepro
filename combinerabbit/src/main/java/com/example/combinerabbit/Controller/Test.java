@@ -51,14 +51,21 @@ public class Test {
         System.out.println("执行完成");
         return "ok";
     }
+
     @RequiresPermissions("update")
     @RequestMapping("/rabb")
     @ResponseBody
     public String test2() {
-/*        for (int i = 0; i < 10000; ++i) {
+        for (int i = 0; i < 10; ++i) {
 
-            rabbitSender.sender();
-        }*/
+            rabbitSender.sender(i);
+        }
         return "ok";
+    }
+
+    @RequestMapping("/")
+    @ResponseBody
+    public String main() {
+        return "master! welcome to you...";
     }
 }

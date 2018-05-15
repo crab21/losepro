@@ -25,30 +25,30 @@ public class ShiroWel {
 
     @RequestMapping(value = "/login")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
-        System.out.println(username+"---"+password);
+        System.out.println(username + "---" + password);
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password);
         org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
 
-        try{
+        try {
             subject.login(usernamePasswordToken);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("登录失败-----------");
         }
-        return "index";
+        return "forward:/";
     }
 
 
     @RequestMapping("/wells")
     @ResponseBody
-    public String wells(){
+    public String wells() {
         User ok = shiroService.findUserByUserName("ok");
-        System.out.println(ok+"+++++++++++++++++++++");
+        System.out.println(ok + "+++++++++++++++++++++");
         return "ok";
     }
 
     @RequestMapping("/home")
     @ResponseBody
-    public String home(){
+    public String home() {
         System.out.println("+++++++++++++++++++++");
         return "ok";
     }
