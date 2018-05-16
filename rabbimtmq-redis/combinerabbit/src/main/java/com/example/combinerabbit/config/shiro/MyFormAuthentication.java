@@ -1,5 +1,6 @@
 package com.example.combinerabbit.config.shiro;
 
+import com.example.combinerabbit.model.Role;
 import com.example.combinerabbit.model.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -17,7 +18,7 @@ public class MyFormAuthentication extends FormAuthenticationFilter {
         subject = SecurityUtils.getSubject();
         User principal = (User) subject.getPrincipal();
         System.out.println(principal.getUid() + "-------------" + principal.getPassword() + "---" + principal.getRoles().size());
-        WebUtils.redirectToSavedRequest(request, response, "/");
+        WebUtils.redirectToSavedRequest(request, response, "/rabb");
         return false;
     }
 }

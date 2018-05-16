@@ -2,7 +2,6 @@ package com.example.combinerabbit.config.rabbitmq;
 
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -23,17 +22,6 @@ public class RabbitConfig {
         cachingConnectionFactory.setPassword("guest");
         cachingConnectionFactory.setPublisherConfirms(true);
         cachingConnectionFactory.setChannelCacheSize(100);
-/*        cachingConnectionFactory.addConnectionListener(new ConnectionListener() {
-            @Override
-            public void onCreate(Connection connection) {
-
-            }
-
-            @Override
-            public void onShutDown(ShutdownSignalException signal) {
-
-            }
-        });*/
         return cachingConnectionFactory;
     }
 
@@ -46,7 +34,7 @@ public class RabbitConfig {
 
     @Bean
     Queue queuea() {
-        return QueueBuilder.durable("mysql_usera").withArgument("x-message-ttl", 30000).build();
+        return new Queue("mysql_usera");
     }
 
     @Bean
@@ -54,10 +42,6 @@ public class RabbitConfig {
         return new Queue("mysql_userb");
     }
 
-    @Bean
-    Queue queuec() {
-        return new Queue("mysql_userc");
-    }
 
 
     public SimpleMessageListenerContainer container(Queue queue) {

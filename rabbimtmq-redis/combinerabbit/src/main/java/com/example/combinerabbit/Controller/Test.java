@@ -56,16 +56,10 @@ public class Test {
     @RequestMapping("/rabb")
     @ResponseBody
     public String test2() {
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < 10000; ++i) {
 
             rabbitSender.sender(i);
         }
         return "ok";
-    }
-
-    @RequestMapping("/")
-    @ResponseBody
-    public String main() {
-        return "master! welcome to you...";
     }
 }

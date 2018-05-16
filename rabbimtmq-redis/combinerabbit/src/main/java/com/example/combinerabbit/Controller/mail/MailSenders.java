@@ -1,7 +1,6 @@
 package com.example.combinerabbit.Controller.mail;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -15,14 +14,10 @@ import javax.mail.internet.MimeMessage;
 public class MailSenders {
     @Autowired
     JavaMailSender javaMailSender;
-    @Value("${spring.mail.host}")
-    public String name;
-
 
     @RequestMapping(value = "/msend")
     @ResponseBody
     public String mailSender() {
-        System.out.println(name);
         System.out.println("--------------------------------------");
         MimeMessage mimeMessage = null;
         try {
@@ -44,9 +39,4 @@ public class MailSenders {
         javaMailSender.send(mimeMessage);
         return "ok";
     }
-
-    public static void main(String[] args) {
-        System.out.println(new MailSenders().name);
-    }
-
 }
