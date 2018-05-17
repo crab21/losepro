@@ -2,6 +2,7 @@ package com.example.combinerabbit.config.rabbitmq;
 
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -13,6 +14,12 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class RabbitConfig {
+    /**
+     * 使用自动配置  无法确认消息是否发布成功.
+     * so 使用注解配置的方式.
+     *
+     * @return
+     */
     @Bean
     public ConnectionFactory connectionFactory() {
         CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory();
@@ -34,14 +41,15 @@ public class RabbitConfig {
 
     @Bean
     Queue queuea() {
-        return new Queue("mysql_usera");
+//        return new Queue("mysql_usera");
+        //可以通过下面的方式绑定一个队列
+        return QueueBuilder.durable("mysql_usera").build();
     }
 
     @Bean
     Queue queueb() {
         return new Queue("mysql_userb");
     }
-
 
 
     public SimpleMessageListenerContainer container(Queue queue) {
