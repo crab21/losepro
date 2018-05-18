@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/mvc">
+<head>
+    <title></title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/lib/jquery.mobile-1.4.5.min.css}"/>
+    <link rel="stylesheet" th:href="@{/lib/themes/default/easyui.css}"/>
+    <link rel="stylesheet" th:href="@{/lib/themes/icon.css}"/>
+
+    <style media="screen">
+        body > div {
+            background: rgb(44, 62, 80) !important;
+            opacity: 1;
+        }
+
+        h1 {
+            background: #0088BB;
+            margin: 0;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        h2 {
+            font-size: 40px;
+            font-family: "sans-serif";
+            border: 1px solid gray;
+            padding: 10px 20px;
+            color: white;
+            width: 320px;
+            margin: auto;
+            margin-top: 140px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .ui-flipswitch {
+            margin-top: 200px;
+            transform: scale(3);
+            margin-left: calc(50% - 45px);
+        }
+
+        #slider + div {
+            width: 60%;
+            height: 50px;
+            /*border: 1px solid white;*/
+            margin: 300px auto;
+        }
+    </style>
+</head>
+
+<body>
+<h1>灯&emsp;控</h1>
+<h2></h2>
+<!--开关-->
+<input type="checkbox" data-role="flipswitch" name="switch" id="switch"/>
+<!--调光-->
+<div id="slider" style="width: 300px;"></div>
+
+</body>
+<script th:src="@{/lib/jquery.js}"></script>
+<script th:src="@{/lib/jquery.mobile-1.4.5.min.js}"></script>
+<script th:src="@{/lib/jquery.easyui.min.js}"></script>
+
+<script th:inline="javascript">
+    $(function () {
+
+        // 获取shortaddr
+        var shoraddr = [[${lightId}]];
+
+        // 财务室
+        var financeOffice = '350-646-647-648';
+        // 技术办公室
+        var technologyOffice = '644-645';
+        // 总经理办公室
+        var managerOffice = '343-611-612-613-614-615';
+        // 实验室
+        var laboratory = '340-341-342-600-601-602-603-604-605-606-607-608-609-610';
+        // 前台-接待室
+        var reception2 = '347-633-634-635-636';
+        // 前台
+        var reception = '347-633-634-635';
+        // 会议室
+        var conference = '348-349-637-638-639-640-641-642-643';
+        // 餐厅
+        var restaurant = '354-665-666-667-669-670-671-672';
+        // 大厅
+        var hall = '344-345-346-351-352-353-355-616-617-618-619-620-621-622-623-624-625-626-627-628-629-630-631-632-659-660-661-662-668-655-656-657-658-663-664-654-653-652-651-650-649';
+        // 靠窗
+        var mywindow = '649-650-651-351-652-653-654';
+        // 大厅北
+        var hall_north = '649-650-651-351-652-653-654-655-656-352-657-658-663-664-659-660-353-661-662-668-355';
+        // 大厅南
+        var hall_south = '628-629-630-346-631-632-622-623-624-625-345-626-627-616-617-618-344-619-620-621';
+        // 照明控制
+        var all_light = '647-648-649-650-651-351-652-653-654-646-350-655-656-352-657-658-663-664-354-665-666-667-644-645-659-660-353-661-662-668-355-669-670-671-672-628-629-630-346-631-632-641-642-643-613-614-615-622-623-624-625-345-626-627-639-349-640-612-611-343-616-617-618-344-619-620-621-348-637-638-604-603-341-340-600-601-602-347-605-606-607-342-608-609-610-633-634-635-636';
+
+        var categoryList = [financeOffice, technologyOffice, managerOffice, laboratory, reception2, reception, conference, restaurant, hall, mywindow, hall_north, hall_south, all_light];
+        var categoryNameList = ["财务室", "技术办公室", "总经理办公室", "实验室", "前台-接待室", "前台", "会议室", "餐厅", "大厅", "阳台", "大厅-北", "大厅-南", "照明控制"];
+
+        $('h2').text(shoraddr);
+        for (var i = 0; i < categoryList.length; i++) {
+            console.log(categoryList[i]);
+            if (shoraddr == categoryList[i]) {
+                $('h2').text(categoryNameList[i]);
+                break;
+            }
+        }
+
+        function switchState() {
+
+            var powerState = [[${lightState}]];
+
+            // 初始化开关状态
+//               $('#switch').parent().addClass("ui-state-disabled mobile-flipswitch-disabled");
+            if (powerState == 1) {
+                return true;
+            } else if (powerState == 0) {
+                // 开
+                $('#switch').parent().addClass("ui-flipswitch-active");
+            } else {
+                // 关
+                $('#switch').parent().addClass("ui-state-disabled mobile-flipswitch-disabled");
+            }
+//            setTimeout(switchState, 2000);
+
+        }
+
+        (function () {
+            switchState();
+//               创建滑块
+            $('#slider').slider({
+                mode: 'h',
+                width: "60%",
+                value: "80%",
+                showTip: true,
+                tipFormatter: function (value) {
+                    return value + '%';
+                },
+                onSlideEnd: function (value) {
+                    $.ajax({
+                        url: "/light/brightness/" + shoraddr + "/" + value,
+                        async: true,
+                        dataType: 'json',
+                        success: function (result) {
+
+                            if (result == 1) {
+                                return true;
+                            } else {
+                                alert('调节失败，请稍后重试');
+                            }
+                        },
+                    });
+                },
+
+            });
+        })();
+
+        $('#switch').change(function () {
+            var state = '';
+            if (this.checked) {
+                state = "1";
+            } else {
+                state = '0';
+            }
+            $.ajax({
+                url: "/light/switch/" + shoraddr + '/' + state,
+                async: true,
+                dataType: 'json',
+                success: function (result) {
+                    if (result == 1) {
+                        return true;
+                    } else {
+                        alert('操作失败');
+                    }
+                }
+
+            });
+
+        });
+
+    })
+</script>
+</html>

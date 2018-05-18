@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AirConditioner</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <script src="lib/jquery.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <!--提示框信息-->
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div id="alertSuccess" class="alert alert-success" hidden
+                 style="z-index:2;position:absolute; width: 100%; text-align: center; margin-top: 300px">
+                操作成功！
+            </div>
+            <div id="alertError" class="alert alert-danger" hidden
+                 style="z-index:2;position:absolute; width: 100%; text-align: center; margin-top: 300px">
+                操作成功！
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="row" style="z-index: 2; position: absolute; width: 100%; margin-top: 300px">-->
+        <!--<div id="alertError" class="alert alert-danger"-->
+             <!--style="position:absolute; width: 300px; text-align: center; left: 50% ;margin-left: -180px;">操作失败！-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--空调参数设置区-->
+    <div class="row">
+        <table class="table table-bordered">
+            <caption style="text-align: center"><h4><b>简单的空调控制页面</b></h4></caption>
+            <thead>
+            <tr>
+                <th style="width: 30%">设置项</th>
+                <th>参数设置</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>开关</td>
+                <td>
+                    <div>
+                        <label class="radio-inline">
+                            <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="1" checked>开
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="0">关
+                        </label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>模式</td>
+                <td>
+                    <!--<div>-->
+                    <div class="btn-group" data-toggle="buttons">
+                        <!--<div class="" data-toggle="">-->
+                        <label class="btn btn-primary" name="airConditionerMode" value1="1">制热</label>
+                        <label class="btn btn-default" name="airConditionerMode" value1="0">制冷</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>风速</td>
+                <td>
+                    <div class="form-group">
+                        <select class="form-control" id="windSelect">
+                            <option value="0">自动</option>
+                            <option value="1">高速</option>
+                            <option value="2">中速</option>
+                            <option value="3">低速</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>温度</td>
+                <td>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="airTemperature" value="26">
+                        <span class="input-group-addon">*C</span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <!--短地址选择区域-->
+    <div class="row">
+        <div class="checkbox" style="text-align: center">
+            空调地址&nbsp;&nbsp;
+            <label>
+                <input type="checkbox" id="selectAllCheckBox">全选
+            </label>
+        </div>
+        <div id="addrDiv" class="col-md-8 col-md-offset-2" style="text-align: center">
+
+        </div>
+    </div>
+
+    <!--提交按钮-->
+    <div class="row" style="margin-top: 30px">
+        <div class="col-md-6 col-md-offset-3">
+            <p>
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="submit">提交</button>
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<script language="javascript">
+
+    //    var baseUrl = "http://192.168.3.100";
+
+    // 绘制复选框
+    var addrDivHtml = '';
+    for (var i = 0; i < 20; i++) {
+        addrDivHtml += '<label class="checkbox-inline"><input type="checkbox" name="addrCheckBox" addr="' + (801 + i) + '" id="inlineCheckbox' + i + '" value="option3">' + (801 + i) + '</label>';
+        if (i == 9) {
+            addrDivHtml += '<br>';
+        }
+    }
+    $("#addrDiv").html(addrDivHtml);
+
+    // 全选操作
+    $("#selectAllCheckBox").change(function () {
+        var checked = this.checked;
+        for (var i = 0; i < 20; i++) {
+            $("#inlineCheckbox" + i).prop("checked", checked);
+        }
+    });
+
+    // 开关
+    var switch0 = $('input[type="radio"][name="optionsRadiosinline"]');
+    switch0.click(function () {
+        var switch0_value = $('input[type="radio"][name="optionsRadiosinline"]:checked').val();
+    });
+
+    // 模式
+    var modeButton = $('[name="airConditionerMode"]');
+    modeButton.click(function () {
+        var primaryButton = $('[class="btn btn-primary"][name="airConditionerMode"]');
+        var defaultButton = $('[class="btn btn-default"][name="airConditionerMode"]');
+        defaultButton.attr("class", "btn btn-primary");
+        primaryButton.attr("class", "btn btn-default");
+    });
+
+    // 风速
+
+
+    // 温度
+
+
+    //    shortaddrs: 短地址，多个：803-802
+    //    switch0; // 开关机：1-开，0-关
+    //    mode; // 模式：1-制热，0-制冷
+    //    windSpeed; // 风速：0-自动，1-高速，2-中速，3-低速
+    //    settingTemperature; // 设定温度，设定范围10~30
+
+    // 提交
+    $("#submit").click(function () {
+
+        // 禁用button
+        $("#submit").attr("disabled", "disabled");
+
+        // 开关
+        var switch0 = $('input[type="radio"][name="optionsRadiosinline"]:checked').val();
+        var mode = $('[class="btn btn-primary"][name="airConditionerMode"]').attr("value1");
+        var wind = $("#windSelect").val();
+        var temperature = $("#airTemperature").val();
+
+        var shortaddrs = "";
+        var addrCheckBoxs = $('[name="addrCheckBox"]');
+        for (var i = 0; i < addrCheckBoxs.length; i++) {
+            var addrCheckBox = addrCheckBoxs[i];
+            if (addrCheckBox.checked) {
+                shortaddrs += "-" + addrCheckBox.getAttribute("addr");
+            }
+        }
+        shortaddrs = shortaddrs.substr(1);
+
+        console.log(switch0);
+        console.log(mode);
+        console.log(wind);
+        console.log(temperature);
+        console.log(shortaddrs);
+
+        if (shortaddrs == undefined || shortaddrs.length == 0) {
+//            $("#alertError").text("请选择短地址信息！").attr("hidden",false);
+            $("#alertError").text("请选择短地址信息！").attr("hidden",false);
+            setTimeout('$("#alertError").attr("hidden",true)',1000);
+            return;
+        }
+
+        $.ajax({
+            type: "post",
+            data: {
+                shortaddrs: shortaddrs,
+                switch0: switch0,
+                mode: mode,
+                windSpeed: wind,
+                settingTemperature: temperature
+            },
+            async: true,
+            url: "/airconditioner/set",
+            dataType: "json",
+            success: function (result) {
+//                console.log(result);
+                if (result == 1) {
+                    $("#alertSuccess").text("操作成功！").attr("hidden",false);
+                    setTimeout('$("#alertSuccess").attr("hidden",true)',1000);
+                } else {
+                    $("#alertError").text("操作失败！").attr("hidden",false);
+                    setTimeout('$("#alertError").attr("hidden",true)',1000);
+                }
+                setTimeout('$("#submit").attr("disabled", null)',1000);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+    });
+
+
+</script>
+
+</body>
+</html>

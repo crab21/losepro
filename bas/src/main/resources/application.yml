@@ -1,0 +1,14 @@
+# server
+server:
+  port: 82
+
+# constant
+# local
+localIp: 127.0.0.1
+localPort: 82
+
+# server
+socketPort: 3527
+
+#logging:
+#  level: debug

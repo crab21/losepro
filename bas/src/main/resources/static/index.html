@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./frame.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/layer/skin/default/layer.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/laydateNew/laydate/theme/default/laydate.css"/>
+</head>
+<!--这是为了禁止F11全屏-->
+<body onkeydown="if(event.keyCode==122){event.keyCode=0;return false}">
+<div class="dahang clearfix">
+    <div class="dh-left">
+        <ul>
+            <li>
+                <div class="liONE">
+                    <img src="img/logo.png" alt="">
+                </div>
+            </li>
+            <!--<li>-->
+                <!--<a href="#office" data-url="/office" style="color: #2cb1fe"><i class="ico"></i>-->
+                    <!--<div class="clo cloD">办公环境</div>-->
+                <!--</a>-->
+            <!--</li>-->
+            <li>
+                <a href="#lightCtrl" data-url="/lightCtrl"  id="zhaoming"><i class="ico"></i>
+                    <div class="clo cloD">照明控制</div>
+                </a>
+            </li>
+            <li>
+                <a href="#airCtrl" data-url="/airCtrl" id="kongtiao"><i class="ico"></i>
+                    <div class="clo cloD">空调控制</div>
+                </a>
+            </li>
+            <!--<li>-->
+                <!--<a href="#videoCtrl" data-url="/videoCtrl"><i class="ico"></i>-->
+                    <!--<div class="clo cloD">视频监控</div>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a href="#conputerCtrl" data-url="/conputerCtrl"><i class="ico"></i>-->
+                    <!--<div class="clo cloD">电脑控制</div>-->
+                <!--</a>-->
+            <!--</li>-->
+        </ul>
+    </div>
+
+    <div class="dh-right">
+        <div class="dh-tit">
+            <!--&lt;!&ndash;退出和修改密码要加havor下划线如果不好看可以改&ndash;&gt;-->
+            <!--<span class="tuichu">[退出]</span>-->
+            <!--<span class="xgmm">[修改密码]</span>-->
+            <!--<div class="tit-right">-->
+                <!--&lt;!&ndash;<span></span><span></span><span></span><span></span>&ndash;&gt;-->
+            <!--</div>-->
+        </div>
+        <div id="linkcontent"  ng-view>
+
+        </div>
+    </div>
+</div>
+</body>
+<script src="lib/jquery.js"></script>
+<script data-baseurl="./" data-main="main.js" src="lib/require.js" id="main"></script>
+<script>
+//    var tit_right = document.querySelector('.tit-right');
+//    if (!sessionStorage.user) {
+//        window.location.href = "user/login.html";
+//    } else {
+//        var user1 = JSON.parse(sessionStorage.user);
+//        tit_right.style.color = "black";
+//        tit_right.innerText = "当前用户:" + user1.name;
+//    }
+//    document.querySelector('.xgmm').onclick = function () {
+//        window.location.href = "user/change.html";
+//    }
+//    document.querySelector('.tuichu').onclick=function(){
+//        window.location.href = "user/login.html";
+//    }
+    var navA = document.querySelectorAll(".dh-left li .ico");
+    var navLi = document.querySelectorAll(".dh-left li a");
+    //菜单变蓝
+    window.onload=function(){
+        var str=window.location.href.split("#")[1];
+        for(var i = 0; i < navLi.length; i++){
+            if(str==navLi[i].dataset.url){
+                for (var h = 0; h < navLi.length; h++) {
+                    navLi[h].style.color = '#000';
+                    $('#kongtiao .ico').css('background-image','url(./img/kongtiao.png)');
+                    $('#zhaoming .ico').css('background-image','url(./img/zhaoming.png)');
+                }
+                navLi[i].style.color = '#2cb1fe';
+                $(navLi[i]).children('.ico').css('background-image','url(./img/'+navLi[i].id+'G.png)');
+            }
+        }
+    }
+    for (var i = 0; i < navLi.length; i++) {
+        navLi[i].onclick = function () {
+            for (var h = 0; h < navLi.length; h++) {
+                navLi[h].style.color = '#000';
+            }
+            this.style.color = '#2cb1fe';
+            $('#kongtiao .ico').css('background-image','url(./img/kongtiao.png)');
+            $('#zhaoming .ico').css('background-image','url(./img/zhaoming.png)');
+            $(this).children('.ico').css('background-image','url(./img/'+this.id+'G.png)');
+        };
+    }
+
+</script>
+
+</html>

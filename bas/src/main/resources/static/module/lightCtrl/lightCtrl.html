@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<link rel="stylesheet" type="text/css" href="module/common.css"/>
+	<link rel="stylesheet" type="text/css" href="module/lightCtrl/lightCtrl.css"/>
+	</head>
+	<body ng-controller='lightCtrl'>
+	<div class="Ctrl">
+		<div class="ctrlL">
+			<div class="mapTop">
+				<ul style="height: 37px;">
+					<li id="group" class="fl">
+						<select name="" id="ctrl">
+							<option value="">请选择分组 </option>
+							<option value="350-646-647-648">财务室 </option>
+							<option value="644-645">技术办公室 </option>
+							<option value="343-611-612-613-614-615">总经理办公室 </option>
+							<option value="340-341-342-600-601-602-603-604-605-606-607-608-609-610">实验室 </option>
+							<option value="347-633-634-635-636">前台-接待室 </option>
+							<option value="348-349-637-638-639-640-641-642-643">会议室 </option>
+							<option value="354-665-666-667-669-670-671-672">餐厅 </option>
+							<option value="649-650-651-351-652-653-654">窗口 </option>
+							<option value="655-656-352-657-658-663-664-659-660-353-661-662-668-355">大厅北 </option>
+							<option value="628-629-630-346-631-632-622-623-624-625-345-626-627-616-617-618-344-619-620-621">大厅南 </option>
+							<option value="344-345-346-351-352-353-355-616-617-618-619-620-621-622-623-624-625-626-627-628-629-630-631-632-659-660-661-662-668-655-656-657-658-663-664-654-653-652-651-650-649">大厅 </option>
+						</select>
+					</li>
+					<li id="choose" class="fr">
+						<ul style="height: 25px;line-height: 25px;">
+							<li class="fl" data-li="0"></li>
+							<span  class="fl">全选</span>
+						</ul>
+					</li>
+				</ul>
+				<div class="map">
+					<ul class="line">
+						<li data-state="0" id="site-647"></li>
+						<li data-state="0" id="site-648"></li>
+						<li data-state="0" id="site-649"></li>
+						<li data-state="0" id="site-650"></li>
+						<li data-state="0" id="site-651"></li>
+						<li data-state="0" id="site-351"></li>
+						<li data-state="0" id="site-652"></li>
+						<li data-state="0" id="site-653"></li>
+						<li data-state="0" id="site-654"></li>
+					</ul>
+					<ul class="line">
+						<li data-state="0" id="site-646"></li>
+						<li data-state="0" id="site-350"></li>
+						<li data-state="0" id="site-655"></li>
+						<li data-state="0" id="site-656"></li>
+						<li data-state="0" id="site-352"></li>
+						<li data-state="0" id="site-657"></li>
+						<li data-state="0" id="site-658"></li>
+						<li data-state="0" id="site-663"></li>
+						<li data-state="0" id="site-664"></li>
+						<li data-state="0" id="site-354"></li>
+						<li data-state="0" id="site-665"></li>
+						<li data-state="0" id="site-666"></li>
+						<li data-state="0" id="site-667"></li>
+					</ul>
+					<ul class="line">
+						<li data-state="0" id="site-644"></li>
+						<li data-state="0" id="site-645"></li>
+						<li data-state="0" id="site-659"></li>
+						<li data-state="0" id="site-660"></li>
+						<li data-state="0" id="site-353"></li>
+						<li data-state="0" id="site-661"></li>
+						<li data-state="0" id="site-662"></li>
+						<li data-state="0" id="site-668"></li>
+						<li data-state="0" id="site-355"></li>
+						<li data-state="0" id="site-669"></li>
+						<li data-state="0" id="site-670"></li>
+						<li data-state="0" id="site-671"></li>
+						<li data-state="0" id="site-672"></li>
+					</ul>
+					<ul class="line">
+						<li data-state="0" id="site-628"></li>
+						<li data-state="0" id="site-629"></li>
+						<li data-state="0" id="site-630"></li>
+						<li data-state="0" id="site-346"></li>
+						<li data-state="0" id="site-631"></li>
+						<li data-state="0" id="site-632"></li>
+						<li data-state="0" id="site-641"></li>
+						<li data-state="0" id="site-642"></li>
+						<li data-state="0" id="site-643"></li>
+					</ul>
+					<ul class="line">
+						<li data-state="0" id="site-613"></li>
+						<li data-state="0" id="site-614"></li>
+						<li data-state="0" id="site-615"></li>
+						<li data-state="0" id="site-622"></li>
+						<li data-state="0" id="site-623"></li>
+						<li data-state="0" id="site-624"></li>
+						<li data-state="0" id="site-625"></li>
+						<li data-state="0" id="site-345"></li>
+						<li data-state="0" id="site-626"></li>
+						<li data-state="0" id="site-627"></li>
+						<li data-state="0" id="site-639"></li>
+						<li data-state="0" id="site-349"></li>
+						<li data-state="0" id="site-640"></li>
+					</ul>
+					<ul class="line">
+						<li data-state="0" id="site-612"></li>
+						<li data-state="0" id="site-611"></li>
+						<li data-state="0" id="site-343"></li>
+						<li data-state="0" id="site-616"></li>
+						<li data-state="0" id="site-617"></li>
+						<li data-state="0" id="site-618"></li>
+						<li data-state="0" id="site-344"></li>
+						<li data-state="0" id="site-619"></li>
+						<li data-state="0" id="site-620"></li>
+						<li data-state="0" id="site-621"></li>
+						<li data-state="0" id="site-348"></li>
+						<li data-state="0" id="site-637"></li>
+						<li data-state="0" id="site-638"></li>
+					</ul>
+					<ul class="line">
+						<li data-state="0" id="site-604"></li>
+						<li data-state="0" id="site-603"></li>
+						<li data-state="0" id="site-341"></li>
+						<li data-state="0" id="site-340"></li>
+						<li data-state="0" id="site-600"></li>
+						<li data-state="0" id="site-601"></li>
+						<li data-state="0" id="site-602"></li>
+						<li data-state="0" id="site-347"></li>
+					</ul>
+					<ul class="line">
+						<li data-state="0" id="site-605"></li>
+						<li data-state="0" id="site-606"></li>
+						<li data-state="0" id="site-607"></li>
+						<li data-state="0" id="site-342"></li>
+						<li data-state="0" id="site-608"></li>
+						<li data-state="0" id="site-609"></li>
+						<li data-state="0" id="site-610"></li>
+						<li data-state="0" id="site-633"></li>
+						<li data-state="0" id="site-634"></li>
+						<li data-state="0" id="site-635"></li>
+						<li data-state="0" id="site-636"></li>
+					</ul>
+					<span class="tuli"></span>
+				</div>
+			</div>
+			<!--<div class="footer">-->
+				<!--<ul>-->
+					<!--<li>总数：<span>80</span>盏</li>-->
+					<!--<li>在线总数：<span>80</span>盏</li>-->
+					<!--<li>总耗能：<span>200</span>W</li>-->
+					<!--<li>传感器：<span>80</span>台</li>-->
+				<!--</ul>-->
+			<!--</div>-->
+		</div>
+		<div class="ctrlR">
+			<p>操作控制</p>
+			<ul>
+				<li>
+					开关
+					<div id="kaiguan" class="ctrlSpan" data-kaiguan="0">
+						<span name="guan"></span>
+						<span name="kai"></span>
+					</div>
+				</li>
+				<li>
+					人感
+					<div id="rengan" class="ctrlSpan" data-rengan="0">
+						<span name="guan"></span>
+						<span name="kai"></span>
+					</div>
+				</li>
+				<li style="display: none">
+					光感
+					<div id="guanggan" class="ctrlSpan" data-guanggan="0">
+						<span ></span>
+						<span ></span>
+					</div>
+				</li>
+				<li>
+					<div style="height: 20px;">
+						<span class="fl">亮度</span>
+						<span class="fr" id="lightNum">50%</span>
+					</div>
+					<img src="img/lightCtrl/xiaotaiyang.png"/>
+					<input type="range" name="" id="ran" value="" />
+					<img src="img/lightCtrl/dataiyang.png" />
+				</li>
+				<li>
+					预设亮度<br>
+					<div class="shortcut">
+						<div style="display: flex;justify-content: space-around">
+							<img src="img/lightCtrl/one.png" alt="100">
+							<img src="img/lightCtrl/two.png" alt="75">
+						</div>
+						<div style="display: flex;justify-content: space-around">
+							<img src="img/lightCtrl/three.png" alt="50">
+							<img src="img/lightCtrl/four.png" alt="25">
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	</body>
+</html>
