@@ -1,5 +1,7 @@
 package com.example.combinerabbit.Controller.mail;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -12,6 +14,7 @@ import javax.mail.internet.MimeMessage;
 
 @Controller
 public class MailSenders {
+    private static Logger logger = LogManager.getLogger();
     @Autowired
     JavaMailSender javaMailSender;
 
@@ -19,6 +22,7 @@ public class MailSenders {
     @ResponseBody
     public String mailSender() {
         System.out.println("--------------------------------------");
+        logger.info("邮件开始发送.....");
         MimeMessage mimeMessage = null;
         try {
             mimeMessage = javaMailSender.createMimeMessage();
@@ -37,6 +41,7 @@ public class MailSenders {
             e.printStackTrace();
         }
         javaMailSender.send(mimeMessage);
+        logger.info("邮件发送成功");
         return "ok";
     }
 }
