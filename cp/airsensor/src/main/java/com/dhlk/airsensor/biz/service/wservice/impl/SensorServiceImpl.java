@@ -5,6 +5,7 @@ import com.dhlk.airsensor.biz.model.SenInfo;
 import com.dhlk.airsensor.biz.model.SensorInfo;
 import com.dhlk.airsensor.biz.model.bean.SensorInputBean;
 import com.dhlk.airsensor.biz.service.wservice.SensorService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,12 @@ public class SensorServiceImpl implements SensorService {
     @Override
 
     public String sensorAirService(SensorInputBean sensorInputBean) {
-        SensorInfo sensorInfo = new SensorInfo(sensorInputBean.getAddr(), sensorInputBean.getAir_addr());
+        String air_addrs = "";
+        if (sensorInputBean.getAir_addr().contains("-")) {
+
+            air_addrs = new Gson().toJson(sensorInputBean.getAir_addr().split("-"));
+        }
+        SensorInfo sensorInfo = new SensorInfo(sensorInputBean.getAddr(), air_addrs);
         int result = insertSensorMapper.updateSensorInfo(sensorInfo);
         List<SenInfo> list = SensorServiceImplHelper.deal(sensorInputBean);
         int resultSec = insertSensorMapper.insertSenInfo(list);

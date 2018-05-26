@@ -8,7 +8,7 @@
         sensor_addr,air_addr
     </sql>
 
-    <insert id="initSensorInfo" parameterType="java.util.List">
+    <insert id="insertSensorInfo" parameterType="java.util.List">
         INSERT INTO sensorinfo (<include refid="Base_column_list"/>)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
@@ -17,8 +17,8 @@
     </insert>
 
     <update id="updateSensorInfo" parameterType="SensorInfo">
-        UPDATE sensorinfo set air_addr=#{air_addr}
-              WHERE sensor_addr=#{sensor_addr}
+        UPDATE sensorinfo set air_addr=#{sensorInfo.air_addr}
+              WHERE sensor_addr=#{sensorInfo.sensor_addr}
     </update>
 
 
@@ -27,7 +27,7 @@
         sensor_addr,sensor_tem,air_tem,start_date,end_date
     </sql>
 
-    <insert id="initSenInfo" parameterType="java.util.List">
+    <insert id="insertSenInfo" parameterType="java.util.List">
         INSERT INTO seninfo (<include refid="Sensor_list"/>)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
@@ -37,8 +37,4 @@
         </foreach>
     </insert>
 
-
-    <insert id="updateSenorInfo">
-
-    </insert>
 </mapper>

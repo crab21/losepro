@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="module/common.css"/>
+    <link rel="stylesheet" type="text/css" href="module/airCtrl/airCtrl.css"/>
+</head>
+<body ng-controller="airCtrl">
+<div class="Ctrl">
+    <div class="ctrlL">
+        <div class="mapTop">
+            <ul style="height: 37px;">
+                <li id="group" class="fl">
+                    <!--<select name="" id="ctrl">-->
+                    <!--<option value="">请选择分组 </option>-->
+                    <!--<option value="350-646-647-648">财务室 </option>-->
+                    <!--<option value="644-645">技术办公室 </option>-->
+                    <!--<option value="343-611-612-613-614-615">总经理办公室 </option>-->
+                    <!--<option value="340-341-342-600-601-602-603-604-605-606-607-608-609-610">实验室 </option>-->
+                    <!--<option value="347-633-634-635-636">前台-接待室 </option>-->
+                    <!--<option value="348-349-637-638-639-640-641-642-643">会议室 </option>-->
+                    <!--<option value="354-665-666-667-669-670-671-672">餐厅 </option>-->
+                    <!--<option value="354-665-666-667-669-670-671-672">窗口 </option>-->
+                    <!--<option value="655-656-352-657-658-663-664-659-660-353-661-662-668-355">大厅北 </option>-->
+                    <!--<option value="628-629-630-346-631-632-622-623-624-625-345-626-627-616-617-618-344-619-620-621">大厅南 </option>-->
+                    <!--<option value="344-345-346-351-352-353-355-616-617-618-619-620-621-622-623-624-625-626-627-628-629-630-631-632-659-660-661-662-668-655-656-657-658-663-664-654-653-652-651-650-649">大厅 </option>-->
+                    <!--</select>-->
+                </li>
+                <li id="choose" class="fr">
+                    <ul style="height: 25px;line-height: 25px;">
+                        <li class="fl" data-li="0"></li>
+                        <span class="fl">全选</span>
+                    </ul>
+                </li>
+            </ul>
+            <div class="map">
+                <ul class="line">
+                    <li data-state="0" id="site-804"><i></i></li>
+                    <li data-state="0" id="site-803"><i></i></li>
+                    <li data-state="0" id="site-802"><i></i></li>
+                    <li data-state="0" id="site-801"><i></i></li>
+                </ul>
+                <ul class="line">
+                    <li data-state="0" id="site-808"><i></i></li>
+                    <li data-state="0" id="site-807"><i></i></li>
+                    <li data-state="0" id="site-806"><i></i></li>
+                    <li data-state="0" id="site-805"><i></i></li>
+                </ul>
+                <ul class="line">
+                    <li data-state="0" id="site-812"><i></i></li>
+                    <li data-state="0" id="site-811"><i></i></li>
+                    <li data-state="0" id="site-810"><i></i></li>
+                    <li data-state="0" id="site-809"><i></i></li>
+                </ul>
+                <ul class="line">
+                    <li data-state="0" id="site-816"><i></i></li>
+                    <li data-state="0" id="site-815"><i></i></li>
+                    <li data-state="0" id="site-814"><i></i></li>
+                    <li data-state="0" id="site-813"><i></i></li>
+                </ul>
+                <ul class="line">
+                    <li data-state="0" id="site-820"><i></i></li>
+                    <li data-state="0" id="site-819"><i></i></li>
+                    <li data-state="0" id="site-818"><i></i></li>
+                    <li data-state="0" id="site-817"><i></i></li>
+                </ul>
+                <span class="tuli"></span>
+            </div>
+        </div>
+        <!--<div class="footer">-->
+        <!--<ul>-->
+        <!--<li>当前温度：<span>80</span></li>-->
+        <!--<li>总数：<span>80</span>台</li>-->
+        <!--<li>在线总数：<span>200</span>台</li>-->
+        <!--<li>总能耗：<span>80</span>W</li>-->
+        <!--</ul>-->
+        <!--</div>-->
+    </div>
+    <div class="ctrlR">
+        <p>操作控制</p>
+        <ul>
+            <li>
+                开关
+                <div id="kaiguan" data-toggle="0" class="ctrlSpan">
+                    <span></span>
+                    <span></span>
+                </div>
+            </li>
+            <li>
+                模式<br>
+                <div id="mode" style="display: flex;justify-content: space-around;"><span class="bgSpan" id='cold'
+                                                                                          data-mode="0"></span><span
+                        id='hot' data-mode="1"></span></div>
+            </li>
+            <li id="btnFS">
+                风速<br>
+                <div style="display: flex;justify-content: space-around;">
+                    <span id="zidong" class="bgSpan" data-btn="0"></span>
+                    <span id="dafeng" data-btn="1"></span>
+                </div>
+                <div style="display: flex;justify-content: space-around;">
+                    <span id="zhongfeng" data-btn="2"></span>
+                    <span id="manfeng" data-btn="3"></span>
+                </div>
+            </li>
+            <li id="temp">
+                温度设定<br>
+                <div>
+                    <span class="jian">-</span>
+                    <span class="bgSpan" style="margin: 0">26</span>
+                    <span class="jia">+</span>
+                </div>
+            </li>
+            <!--<li id="setTime">-->
+            <!--定时<br>-->
+            <!--<select name="" id="">-->
+            <!--<option value="03h">03h</option>-->
+            <!--<option value="2.5h">2.5h</option>-->
+            <!--<option value="2h">2h</option>-->
+            <!--<option value="1.5h">1.5h</option>-->
+            <!--<option value="1h">1h</option>-->
+            <!--<option value="0.5h">0.5h</option>-->
+            <!--</select>-->
+            <!--<select name="" id="">-->
+            <!--<option value="ON">ON</option>-->
+            <!--<option value="OFF">OFF</option>-->
+            <!--</select>-->
+            <!--</li>-->
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

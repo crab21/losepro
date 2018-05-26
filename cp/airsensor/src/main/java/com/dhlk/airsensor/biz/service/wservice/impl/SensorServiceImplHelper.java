@@ -18,16 +18,35 @@ public class SensorServiceImplHelper {
         SenInfo senInfo = new SenInfo();
         dealDate(senInfo, sensorInputBean.getDate());
         //list.add();
-        return null;
+        senInfo.setSensor_addr(sensorInputBean.getAddr());
+
+        dealTem(senInfo, sensorInputBean.getTem());
+        list.add(senInfo);
+        return list;
+    }
+
+    private static void dealTem(SenInfo senInfo, String tem) {
+        String subResult = tem;
+        if (tem.contains(splitDateDecli)) {
+            splitData = tem.substring(tem.lastIndexOf(splitDateDecli) + 1, tem.length());
+            subResult = tem.substring(0, tem.lastIndexOf(splitDateDecli));
+        }
+
+        String[] split = subResult.split(splitData);
+        senInfo.setSensor_tem(split[0]);
+        senInfo.setAir_tem(split[1]);
+
     }
 
     private static void dealDate(SenInfo senInfo, String date) {
+        String subResult = date;
         if (date.contains(splitDateDecli)) {
-            splitData = date.substring(date.lastIndexOf(splitDateDecli), date.length() - 1);
+            splitData = date.substring(date.lastIndexOf(splitDateDecli) + 1, date.length());
+            subResult = date.substring(0, date.lastIndexOf(splitDateDecli));
         }
-        String subResult = date.substring(0, date.lastIndexOf(splitDateDecli));
         String[] split = subResult.split(splitData);
         senInfo.setStart_date(split[0]);
         senInfo.setEnd_date(split[1]);
+        splitData = "-";
     }
 }

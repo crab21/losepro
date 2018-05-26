@@ -1,0 +1,136 @@
+.clearfix{
+    clear: both;
+}
+.Ctrl{
+    position: relative;
+    height: 100%;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.ctrlL{
+    width: 80%;
+    height: 100%;
+    float: left;
+    position: absolute;
+}
+.mapTop{
+    height: -webkit-calc(100% - (110px));
+    height: calc(100% - (110px));
+    box-sizing: border-box;
+    padding:1% 2% 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+#group select{
+    width: 120px;
+    height: 32px;
+    background-color: #ffffff;
+    box-shadow: 2px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    padding: 4px;
+    outline: none;
+}
+#choose li{
+    width: 25px;
+    height: 25px;
+    margin: 0 8px;
+}
+#choose li:nth-of-type(1){
+    background: url("../img/lightCtrl/quanxuan.png") no-repeat center/100%;
+}
+.ctrlL .footer{
+    width: 98%;
+    height: 55px;
+    position: absolute;
+    bottom: 55px;
+    background: #f0f0f0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.ctrlL .footer ul{
+    display: flex;
+    justify-content: space-around;
+    line-height: 55px;
+}
+.ctrlR{
+    width: 20%;
+    height: 100%;
+    float: right;
+    background-color: #f0f0f0;
+}
+.ctrlR p{
+    text-align: center;
+    color: #3193ee;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.ctrlR ul{
+    padding: 10px;
+}
+.ctrlR li{
+    border-top: solid 1px #c2c2c2;
+    padding: 12px 0;
+}
+.ctrlSpan{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+.ctrlSpan span:nth-of-type(2){
+    background: url(../img/lightCtrl/kai.png) no-repeat center/100%;
+    width: 46px;
+    display: inline-block;
+    height: 46px;
+}
+.ctrlSpan span:nth-of-type(1){
+    background: url(../img/lightCtrl/guan.png) no-repeat center/100%;
+    width: 46px;
+    display: inline-block;
+    height: 46px;
+}
+.mapTop .map{
+    background: url(../img/lightCtrl/pic.png) no-repeat center top/contain;
+    width: 98%;
+    position: relative;
+    margin: auto;
+}
+.tuli{
+    background: url("../img/lightCtrl/zhuangtai.png") no-repeat center/100%;
+    position: absolute;
+    width: 38px;
+    height: 144px;
+    right: -3%;
+    bottom: 26%;
+}
+.map ul{
+    width: 100%;
+    height: 1%;
+    position: absolute;
+}
+.map ul li{
+    width: 4%;
+    height: 100%;
+    background: black;
+    float: left;
+    margin-right: 1%;
+    position: relative;
+}
+.map ul li::after{
+    content: '';
+    position: absolute;
+    background: url(../img/lightCtrl/quanxuan.png) no-repeat center/100%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+.map ul li.blockAfter::after{
+    display: block;
+}
