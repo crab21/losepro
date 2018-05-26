@@ -22,7 +22,7 @@ public class SensorServiceImpl implements SensorService {
         int result = insertSensorMapper.updateSensorInfo(sensorInfo);
         List<SenInfo> list = SensorServiceImplHelper.deal(sensorInputBean);
         int resultSec = insertSensorMapper.insertSenInfo(list);
-        
+
         if (result == 1 && resultSec == 1) {
             return "ok";
         }

@@ -12,6 +12,6 @@ public interface SensorService {
      * @param sensorInputBean
      * @return
      */
-    public String sensorAirService(SensorInputBean sensorInputBean);
+    String sensorAirService(SensorInputBean sensorInputBean);
 
 }

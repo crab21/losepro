@@ -2,12 +2,10 @@ package com.dhlk.airsensor.controller;
 
 import com.dhlk.airsensor.biz.model.bean.SensorInputBean;
 import com.dhlk.airsensor.biz.service.airDeal.airControl.SummerControl;
+import com.dhlk.airsensor.biz.service.wservice.SensorService;
 import com.dhlk.airsensor.conf.sensor.SensorInit;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SensorControl {
@@ -16,6 +14,9 @@ public class SensorControl {
     private SensorInit sensorDeal;
     @Autowired
     SummerControl summerControl;
+
+    @Autowired
+    SensorService sensorService;
 
     @RequestMapping("/getsensor")
     public String getSensor() {
@@ -47,12 +48,19 @@ public class SensorControl {
      * @return
      */
     @PostMapping(value = "/sensor")
+    @ResponseBody
     public String sensorWithAir(@RequestParam("addr") String sensorAddr,
                                 @RequestParam("tem") String tem,
                                 @RequestParam("date") String date,
                                 @RequestParam("air_addr") String airAddr) {
+        System.out.println(sensorAddr + "--" + tem + "--" + date + "---" + airAddr + "--");
+        sensorAddr = "01";
+        tem = "123456";
+        date = "20180910-20181090-20181003-20190203#-";
+        airAddr = "002-090-230-909-998#-";
         SensorInputBean sensorInputBean = new SensorInputBean(sensorAddr, tem, date, airAddr);
-        return null;
+        sensorService.sensorAirService(sensorInputBean);
+        return "ok";
 
     }
 
