@@ -1,6 +1,6 @@
 package com.dhlk.airsensor.conf.sensor;
 
-import com.dhlk.airsensor.biz.dao.InsertSensorMapper;
+import com.dhlk.airsensor.biz.dao.UpdateSensorMapper;
 import com.dhlk.airsensor.biz.model.SenInfo;
 import com.dhlk.airsensor.biz.model.SensorInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +12,12 @@ import java.util.List;
 @Component
 public class SensorInit {
     @Autowired
-    InsertSensorMapper insertSensorMapper;
+    UpdateSensorMapper insertSensorMapper;
 
     public void init() {
         List list = initSensor(null);
-        insertSensorMapper.initSensorInfo((List<SensorInfo>) list.get(0));
-        insertSensorMapper.initSenInfo((List<SenInfo>) list.get(1));
+        insertSensorMapper.insertSensorInfo((List<SensorInfo>) list.get(0));
+        insertSensorMapper.insertSenInfo((List<SenInfo>) list.get(1));
     }
 
     private List initSensor(List list) {

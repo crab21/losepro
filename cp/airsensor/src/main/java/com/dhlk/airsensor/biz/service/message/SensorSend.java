@@ -17,3 +17,4 @@ public class SensorSend implements AirConSenor {
         return message;
     }
 }
+

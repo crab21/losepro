@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +44,10 @@ public class SensorMessage {
         System.out.println(list.size() + ">>>>>>>>>>>>>");
         for (SensorInfo addr :
                 list) {
-            List range = listOperations.range(addr.getSensor_addr(), 1, 100);
+            List range = new ArrayList();
+            //选择需要获取的元素
+            String index = (String) listOperations.index(addr.getSensor_addr(), 0);
+            range.add(index);
             map.put(addr.getSensor_addr(), range);
         }
         return map;

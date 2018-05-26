@@ -4,12 +4,10 @@ import com.dhlk.airsensor.biz.model.SenInfo;
 import com.dhlk.airsensor.biz.model.SensorInfo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
-@Transactional
 public interface SelectSensorMapper {
     /**
      * 查询所有传感器的信息

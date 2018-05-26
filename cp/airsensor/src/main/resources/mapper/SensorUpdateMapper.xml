@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dhlk.airsensor.biz.dao.InsertSensorMapper">
+<mapper namespace="com.dhlk.airsensor.biz.dao.UpdateSensorMapper">
 
+
+    <!--sensorInfo-->
     <sql id="Base_column_list">
-    sensor_addr,air_addr
+        sensor_addr,air_addr
     </sql>
-
-    <sql id="Sensor_list">
-        sensor_addr,sensor_tem,air_tem,start_date,end_date
-    </sql>
-
 
     <insert id="initSensorInfo" parameterType="java.util.List">
         INSERT INTO sensorinfo (<include refid="Base_column_list"/>)
@@ -18,6 +15,17 @@
             (#{item.sensor_addr,jdbcType=VARCHAR}, #{item.air_addr,jdbcType=VARCHAR})
         </foreach>
     </insert>
+
+    <update id="updateSensorInfo" parameterType="SensorInfo">
+        UPDATE sensorinfo set air_addr=#{air_addr}
+              WHERE sensor_addr=#{sensor_addr}
+    </update>
+
+
+    <!--senInfo-->
+    <sql id="Sensor_list">
+        sensor_addr,sensor_tem,air_tem,start_date,end_date
+    </sql>
 
     <insert id="initSenInfo" parameterType="java.util.List">
         INSERT INTO seninfo (<include refid="Sensor_list"/>)
@@ -29,4 +37,8 @@
         </foreach>
     </insert>
 
+
+    <insert id="updateSenorInfo">
+
+    </insert>
 </mapper>

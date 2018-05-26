@@ -9,9 +9,11 @@ public class SenInfo implements Serializable {
     private String sensor_addr;
     //和传感器比较的地址
     private String sensor_tem;
-    //设定的起始时间
+    //设定的温度
     private String air_tem;
+    //设定的起始时间
     private String start_date;
+    //结束的时间
     private String end_date;
     private String air_addr;
 
