@@ -3,7 +3,6 @@ package com.dhlk.airsensor.biz.service.airDeal.airControl;
 import com.dhlk.airsensor.biz.dao.SelectSensorMapper;
 import com.dhlk.airsensor.biz.model.HumidityTem;
 import com.dhlk.airsensor.biz.model.SenInfo;
-import com.dhlk.airsensor.biz.service.airDeal.AirDeal;
 import com.dhlk.airsensor.biz.service.airDeal.SensorDeal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,12 +17,8 @@ public abstract class AirControl {
     SensorDeal sensorDeal;
 
     @Autowired
-    AirDeal airDeal;
-
-    @Autowired
     SelectSensorMapper sensorSelectMapper;
-    //恒温设置
-    static String tempAir = "";
+
 
     /**
      * 定时控制类
@@ -37,29 +32,27 @@ public abstract class AirControl {
         if (list.size() == 0) {
             return 1;
         }
+        //todo
         //空调温度
         String airTem = "";
+        //todo
         //空调发送命令码
         Map map = new HashMap<>();
-        //冬季或者夏季
-        int flag = 0;
-        //标准比较温度
-        String standTem = "";
+
         //设定的结果值
-        int result = dealTem(list, airTem, tempAir, map);
+        int result = dealTem(list, airTem, map);
         return result;
     }
 
     /**
-     * @param list    传感器温度
-     * @param airTem  空调温度
-     * @param tempAir 设定的温度
-     * @param map     发送命令
+     * @param list   传感器温度
+     * @param airTem 空调温度
+     * @param map    发送命令
      * @return
      */
-    protected abstract int dealTem(List<HumidityTem> list, String airTem, String tempAir, Map map);
+    protected abstract int dealTem(List<HumidityTem> list, String airTem, Map map);
 
-    public void airConditionTemSet(List airCondition, List<HumidityTem> list) {
+    public void airConditionTemSet(List airCondition, List<HumidityTem> list, String airTem) {
         for (int i = 1; i < list.size(); ++i) {
             List<SenInfo> sensorInfoByAddr = sensorSelectMapper.findSensorInfoByAddr(list.get(i).getAddr());
             //todo
@@ -73,7 +66,7 @@ public abstract class AirControl {
                 System.out.println("夏天设定成功" + i);
 
             }*/
-            System.out.println(sensorInfoByAddr.size() + "-------------");
+            System.out.println(sensorInfoByAddr.get(0).getAir_addr() + "-------------设定温度" + airTem);
         }
         return;
     }

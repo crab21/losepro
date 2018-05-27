@@ -28,7 +28,7 @@
         on  a.sensor_addr = b.sensor_addr
         where   a.sensor_addr=#{sensorAddr}
         order by a.id desc
-        limit 1
+        limit 5
     </select>
 
 </mapper>

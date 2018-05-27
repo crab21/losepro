@@ -11,6 +11,8 @@ import java.util.List;
 
 @Component
 public class SensorInit {
+    public static volatile String summerDate = "201805101928201810011928";
+    public static volatile String winterDate = "201810031928201902031928";
     @Autowired
     UpdateSensorMapper insertSensorMapper;
 

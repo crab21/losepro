@@ -16,7 +16,7 @@ public class ScheduleAirSensor {
 
     private ScheduledFuture scheduledFuture;
 
-    private static String cronTrigger = "";
+    private static String cronTrigger = "*/5 * * ? * *";
 
     @Bean
     public ThreadPoolTaskScheduler setTaskScheduler() {
