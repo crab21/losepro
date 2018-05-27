@@ -22,7 +22,6 @@ public class SensorServiceImplHelper {
      */
     public static List<SenInfo> deal(SensorInputBean sensorInputBean) {
         List<SenInfo> list = new ArrayList<>();
-        //todo
 
         //日期处理
         SenInfo senInfo = new SenInfo();
@@ -30,7 +29,6 @@ public class SensorServiceImplHelper {
         if (!b) {
             return list;
         }
-        //list.add();
         senInfo.setSensor_addr(sensorInputBean.getAddr());
 
         boolean b1 = dealTem(senInfo, sensorInputBean.getTem());
