@@ -45,4 +45,10 @@ public class CombinerabbitApplicationTests {
         ListOperations listOperations = redisTemplate.opsForList();
 
     }
+
+    @Test
+    public void redisAdd(){
+        stringRedisTemplate.opsForList().leftPush("test","90");
+
+    }
 }
