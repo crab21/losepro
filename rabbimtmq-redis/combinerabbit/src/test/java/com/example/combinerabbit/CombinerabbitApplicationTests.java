@@ -1,18 +1,14 @@
 package com.example.combinerabbit;
 
-import com.example.combinerabbit.Redis.Jobs;
-import com.google.gson.Gson;
-import org.junit.Before;
+import com.example.combinerabbit.mapper.UserMapper;
+import com.example.combinerabbit.model.Users;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.ListOperations;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.UUID;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -20,6 +16,9 @@ public class CombinerabbitApplicationTests {
 
 
     @Autowired
+    UserMapper userMapper;
+
+/*    @Autowired
     RedisTemplate redisTemplate;
 
     @Autowired
@@ -35,8 +34,8 @@ public class CombinerabbitApplicationTests {
     public void contextLoads() {
         Jobs jobs = new Jobs("ww", UUID.randomUUID() + "", 12);
         stringRedisTemplate.opsForValue().set(jobs.getName(), new Gson().toJson(jobs));
-        /*Object o = redisTemplate.opsForValue().get(jobs.getName());
-        System.out.println(o + "----------------");*/
+        *//*Object o = redisTemplate.opsForValue().get(jobs.getName());
+        System.out.println(o + "----------------");*//*
         String s = stringRedisTemplate.opsForValue().get(jobs.getName());
         System.out.println(s);
         Jobs jobs1 = new Gson().fromJson(s, Jobs.class);
@@ -47,8 +46,16 @@ public class CombinerabbitApplicationTests {
     }
 
     @Test
-    public void redisAdd(){
-        stringRedisTemplate.opsForList().leftPush("test","90");
+    public void redisAdd() {
+        stringRedisTemplate.opsForList().leftPush("test", "90");
 
+    }*/
+
+    @Test
+    public void testUserMapper() {
+        List<Users> allUser = userMapper.findAllUser();
+        List<Users> allUser1 = userMapper.findAllUser();
+        System.out.println(allUser1.size());
+        System.out.println(allUser.size());
     }
 }

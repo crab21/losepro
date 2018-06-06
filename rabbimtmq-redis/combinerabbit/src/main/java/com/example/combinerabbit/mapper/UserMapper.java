@@ -1,5 +1,6 @@
 package com.example.combinerabbit.mapper;
 
+import com.example.combinerabbit.config.mysql.TargetSource;
 import com.example.combinerabbit.model.Users;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,7 +15,7 @@ import java.util.List;
 @Repository
 @Transactional
 public interface UserMapper {
-
+    @TargetSource("secondary")
     @Select("select * from rabb")
     List<Users> findAllUser();
 
