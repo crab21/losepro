@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 @Transactional
 public interface UserMapper {
-    @TargetSource("secondary")
+    @TargetSource("primary")
     @Select("select * from rabb")
     List<Users> findAllUser();
 

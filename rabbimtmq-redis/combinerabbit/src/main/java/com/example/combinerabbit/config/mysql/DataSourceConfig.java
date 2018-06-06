@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -14,12 +15,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
+@Component
 public class DataSourceConfig {
 
     /* @Bean(name = "primaryData")
      @Qualifier("primaryData")*/
 
-    @Primary
+
     @Bean(name = "primaryData")
     @ConfigurationProperties(prefix = "spring.datasource.primary")
     public DataSource primaryData() {
@@ -29,10 +31,11 @@ public class DataSourceConfig {
         return build;
     }
 
-
+    @Primary
     @Bean(name = "secondaryData")
     @ConfigurationProperties(prefix = "spring.datasource.second")
     public DataSource secondaryData() {
+
         DataSource build = DataSourceBuilder.create().build();
         System.out.println(build + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 

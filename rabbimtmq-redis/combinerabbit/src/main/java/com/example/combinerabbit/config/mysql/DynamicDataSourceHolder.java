@@ -1,5 +1,8 @@
 package com.example.combinerabbit.config.mysql;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class DynamicDataSourceHolder {
     private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
     public static void putDataSource(String name) {

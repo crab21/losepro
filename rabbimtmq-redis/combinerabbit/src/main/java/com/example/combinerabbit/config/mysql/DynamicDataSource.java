@@ -1,6 +1,7 @@
 package com.example.combinerabbit.config.mysql;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
+import org.springframework.stereotype.Component;
 
 public class DynamicDataSource extends AbstractRoutingDataSource {
     @Override
