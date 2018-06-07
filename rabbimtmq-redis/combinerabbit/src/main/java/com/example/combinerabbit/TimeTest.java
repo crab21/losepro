@@ -1,7 +1,6 @@
 package com.example.combinerabbit;
 
 import com.example.combinerabbit.Service.UserServiceImpl;
-import com.example.combinerabbit.mapper.UserMapper;
 import com.example.combinerabbit.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +36,8 @@ public class TimeTest {
     @GetMapping("/datats")
     public String test() {
         List<Users> allUser = userMapper.update();
+        userMapper.updateSlave();
+
         System.out.println(allUser.size() + "-------------");
         return "ok";
     }

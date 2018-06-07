@@ -1,7 +1,7 @@
 spring:
   datasource:
     primary:
-      url: jdbc:mysql://127.0.0.1:3306/shirotest?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
       username: root
       password: root
 
@@ -22,7 +22,7 @@ spring:
       poolPreparedStatements: true
       maxOpenPreparedStatements: 20
     second:
-      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      url: jdbc:mysql://127.0.0.1:3306/testone?useUnicode=true&characterEncoding=utf-8&useSSL=false
       username: root
       password: root
 

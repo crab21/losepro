@@ -4,7 +4,6 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
@@ -13,35 +12,29 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 public class DataSourceAspect {
-    @Pointcut(value = "execution(* com.example.combinerabbit.mapper..*.*(..))")
-    public void dataSourcePointCut() {
-
-    }
-
-    @Before(value = "dataSourcePointCut()")
+    @Before(value = "@annotation(TargetSource)")
     public void before(JoinPoint joinPoint) {
-        Object target = joinPoint.getTarget();
+        Class<?> aClass = joinPoint.getTarget().getClass();
         String name = joinPoint.getSignature().getName();
-        Class<?>[] clazz = target.getClass().getInterfaces();
+//        Class<?>[] clazz = target.getClass().getInterfaces();
         Class<?>[] parameterTypes = ((MethodSignature) joinPoint.getSignature()).getMethod().getParameterTypes();
-        System.out.println(clazz.length + ":::::::::::::::::::::::::::::::::");
+        String datasource = DynamicDataSourceHolder.DEFAULTS;
         try {
-            Method method = clazz[0].getMethod(name, parameterTypes);
+            Method method = aClass.getMethod(name, parameterTypes);
             if (method != null && method.isAnnotationPresent(TargetSource.class)) {
                 TargetSource annotation = method.getAnnotation(TargetSource.class);
-                String value = annotation.value();
-                System.out.println(value + ":::::::::::::::::::::::::::");
-                DynamicDataSourceHolder.putDataSource(value);
-                System.out.println(value + "++++++++++++++++++++++");
+                datasource = annotation.value();
+
 
             }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
+        DynamicDataSourceHolder.putDataSource(datasource);
     }
 
 
-    @After(value = "dataSourcePointCut()")
+    @After(value = "@annotation(TargetSource)")
     public void after(JoinPoint joinPoint) {
         DynamicDataSourceHolder.removeDataSource();
     }

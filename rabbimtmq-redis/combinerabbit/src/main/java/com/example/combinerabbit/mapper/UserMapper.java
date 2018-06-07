@@ -1,21 +1,19 @@
 package com.example.combinerabbit.mapper;
 
-import com.example.combinerabbit.config.mysql.TargetSource;
-import com.example.combinerabbit.model.Users;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Mapper
 @Repository
+@Transactional
 public interface UserMapper {
-    @TargetSource("primary")
-    @Select("select * from rabb")
-    List<Users> findAllUser();
+    @Transactional
+    @Select("select count(*) from user")
+    int findAllUser();
 
     @Insert("insert into rabb values(#{i}, #{name})")
     void insert(@Param("i") int i, @Param("name") String name1);
@@ -41,5 +39,6 @@ public interface UserMapper {
 
     @Select("select * from role")
     List<Role> selectRoles();*/
+
 
 }

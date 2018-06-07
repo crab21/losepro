@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 @Configuration
 @Component
 public class DynamicDataSourceHolder {
+    public static final String DEFAULTS = "master";
     private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
     public static void putDataSource(String name) {
