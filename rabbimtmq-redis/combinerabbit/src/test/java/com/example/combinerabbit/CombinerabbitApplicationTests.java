@@ -1,6 +1,7 @@
 package com.example.combinerabbit;
 
 import com.example.combinerabbit.Service.UserServiceImpl;
+import com.example.combinerabbit.mapper.UserMapper;
 import com.example.combinerabbit.model.Users;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +17,7 @@ public class CombinerabbitApplicationTests {
 
 
     @Autowired
-    UserServiceImpl userMapper;
+    UserMapper userMapper;
 
 /*    @Autowired
     RedisTemplate redisTemplate;
@@ -53,8 +54,8 @@ public class CombinerabbitApplicationTests {
 
     @Test
     public void testUserMapper() {
-        List<Users> allUser = userMapper.update();
-        List<Users> allUser1 = userMapper.update();
+        List<Users> allUser = userMapper.findAllUser();
+        List<Users> allUser1 = userMapper.findAllUser();
         System.out.println(allUser1.size() + "--------------" + allUser.get(0).getName());
         System.out.println(allUser.size());
     }

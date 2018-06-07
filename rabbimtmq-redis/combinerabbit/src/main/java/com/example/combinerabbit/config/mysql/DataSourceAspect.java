@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 public class DataSourceAspect {
-    @Pointcut(value = "execution(* com.example.combinerabbit.mapper.*.*(..))")
+    @Pointcut(value = "execution(* com.example.combinerabbit.mapper..*.*(..))")
     public void dataSourcePointCut() {
 
     }
@@ -24,14 +24,15 @@ public class DataSourceAspect {
         String name = joinPoint.getSignature().getName();
         Class<?>[] clazz = target.getClass().getInterfaces();
         Class<?>[] parameterTypes = ((MethodSignature) joinPoint.getSignature()).getMethod().getParameterTypes();
-
+        System.out.println(clazz.length + ":::::::::::::::::::::::::::::::::");
         try {
             Method method = clazz[0].getMethod(name, parameterTypes);
             if (method != null && method.isAnnotationPresent(TargetSource.class)) {
                 TargetSource annotation = method.getAnnotation(TargetSource.class);
                 String value = annotation.value();
+                System.out.println(value + ":::::::::::::::::::::::::::");
                 DynamicDataSourceHolder.putDataSource(value);
-                System.out.println(value + "--------------------");
+                System.out.println(value + "++++++++++++++++++++++");
 
             }
         } catch (NoSuchMethodException e) {

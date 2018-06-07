@@ -1,10 +1,21 @@
 package com.example.combinerabbit;
 
+import com.example.combinerabbit.Service.UserServiceImpl;
+import com.example.combinerabbit.mapper.UserMapper;
+import com.example.combinerabbit.model.Users;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.List;
 
+@RestController
 public class TimeTest {
+    @Autowired
+    UserServiceImpl userMapper;
+
     public static void main(String[] args) {
 
 
@@ -21,5 +32,12 @@ public class TimeTest {
         String format = simpleDateFormat.format(dateUtil);
         System.out.println(format);
         System.out.println(dateSql);
+    }
+
+    @GetMapping("/datats")
+    public String test() {
+        List<Users> allUser = userMapper.update();
+        System.out.println(allUser.size() + "-------------");
+        return "ok";
     }
 }
