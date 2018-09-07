@@ -1,13 +1,15 @@
 package com.example.combinerabbit.Service;
 
 import com.example.combinerabbit.config.mysql.TargetSource;
-import com.example.combinerabbit.mapper.UserMapper;
 import com.example.combinerabbit.mapper.StudentMapper;
+import com.example.combinerabbit.mapper.UserMapper;
+import com.example.combinerabbit.model.User;
 import com.example.combinerabbit.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl {
@@ -24,6 +26,8 @@ public class UserServiceImpl {
 /*        for (Users user : allUser) {
             System.out.println(user.getId() + "-------" + user.getName());
         }*/
+        User user = null;
+
         return null;
     }
 
