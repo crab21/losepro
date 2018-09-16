@@ -7,6 +7,10 @@ server:
 spring:
   application:
     name: service-ribbon
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
 ribbon:
   eager-load:
     enabled: true
