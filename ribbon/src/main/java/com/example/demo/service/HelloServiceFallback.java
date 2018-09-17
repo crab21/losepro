@@ -1,12 +1,8 @@
 package com.example.demo.service;
 
-import com.netflix.hystrix.HystrixCircuitBreaker;
-import com.netflix.hystrix.HystrixCommand;
-import com.netflix.hystrix.HystrixObservableCommand;
 import feign.hystrix.FallbackFactory;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
+import org.springframework.context.support.AbstractApplicationContext;
 
-import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -25,8 +21,7 @@ public class HelloServiceFallback implements FallbackFactory {
         atomicInteger.compareAndSet(a, b);
         int i = atomicInteger.get();
         System.out.println(i);
-        ThreadPoolTaskScheduler.
-
+        AbstractApplicationContext.
     }
 
 }
