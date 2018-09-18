@@ -17,20 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Field;
 
-//@SpringBootApplication
-//@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
-//@EnableEurekaClient
-//@EnableDiscoveryClient
-//@RestController
-//@EnableHystrix
-//@EnableHystrixDashboard
-//@EnableCircuitBreaker
+@SpringBootApplication
+@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
+@EnableEurekaClient
+@EnableDiscoveryClient
+@RestController
+@EnableHystrix
+@EnableHystrixDashboard
+@EnableCircuitBreaker
 public class ClientApplication {
 
     public static void main(String[] args) {
-        String resultsStr = getResultsStrs(User.class);
-        System.out.println(resultsStr);
-//        SpringApplication.run(ClientApplication.class, args);
+//        String resultsStr = getResultsStrs(User.class);
+//        System.out.println(resultsStr);
+        SpringApplication.run(ClientApplication.class, args);
+//        String wang = new Gson().toJson("wang");
+//        System.out.println(wang);
     }
 
     @RequestMapping("/hi")
@@ -38,7 +40,7 @@ public class ClientApplication {
     public String home(@RequestParam("name") String name) {
         System.out.println("--->");
         System.out.println(name);
-        return "hello spring cloud 8763";
+        return "wang";
     }
 
     public String hiError(String name) {

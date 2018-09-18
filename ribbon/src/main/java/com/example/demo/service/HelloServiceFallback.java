@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import feign.hystrix.FallbackFactory;
-import org.springframework.context.support.AbstractApplicationContext;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -21,7 +20,6 @@ public class HelloServiceFallback implements FallbackFactory {
         atomicInteger.compareAndSet(a, b);
         int i = atomicInteger.get();
         System.out.println(i);
-        AbstractApplicationContext.
     }
 
 }
