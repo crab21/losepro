@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.service.HelloService;
 import com.example.demo.service.HelloServiceFeign;
+import com.example.demo.service.User;
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -31,8 +32,13 @@ class HelloController {
         System.out.println(name);
         System.out.println(helloService);
         HystrixRequestContext context = HystrixRequestContext.initializeContext();
-        helloService.test10(name);
-
+        User user = helloService.test10(name);
+        User user1 = helloService.test10(name);
+        User user2 = helloService.test10(name);
+        User user3 = helloService.test10(name);
+        User user4 = helloService.test10(name);
+        User user5 = helloService.test10(name);
+        System.out.println(user.getName());
         context.close();
 //        System.out.println(stringFuture.get());
         return "ok";

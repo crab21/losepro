@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
@@ -37,15 +39,17 @@ public class ClientApplication {
 
     @RequestMapping("/hi")
     @HystrixCommand(fallbackMethod = "hiError")
-    public String home(@RequestParam("name") String name) {
+    public List<User> home(@RequestParam("name") String name) {
         System.out.println("--->");
         System.out.println(name);
-        return "wang";
+        List<User> objects = new ArrayList<>();
+        objects.add(new User("wang", "123", "345"));
+        return objects;
     }
 
-    public String hiError(String name) {
+    public List<User> hiError(String name) {
         System.out.println("sorry---->>>");
-        return "hi," + name + ",sorry,error!";
+        return new ArrayList<>();
     }
 
     public static String getResultsStr(Class origin) {
