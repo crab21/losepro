@@ -14,6 +14,13 @@ import java.io.IOException;
 @RestController
 public class FileController {
 
+    /**
+     * 进度条解决办法：
+     *          后台设置session，存放进度信息
+     *          前台通过轮询的方式访问session中的信息
+     * @param file
+     * @return
+     */
     @RequestMapping("/upload")
     public String upload(@RequestParam("file") MultipartFile file) {
         System.out.println(".......................");
