@@ -75,6 +75,7 @@ public class ClientApplication {
             String s = new PropertyNamingStrategy.SnakeCaseStrategy().translate(field.getName()).toLowerCase();
             stringBuffer.append(String.format("@Result(property = \"%s\", column = \"%s\"),\n", name, s));
         }
+
         stringBuffer.append("})");
         return stringBuffer.toString();
     }

@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * Created by k on 2018/8/14.
+ * feign是通过线程池来实现隔离的
  */
 @Service
 public class HelloService {
@@ -33,7 +34,7 @@ public class HelloService {
         return null;
     }
 
-    @HystrixCommand()
+    @HystrixCommand(commandKey = "hiService")
     public List<User> hiService(List<String> name) {
         System.out.println(name.size() + ">>>>>>>>>>>");
         String join = StringUtils.join(name, ",");
