@@ -51,7 +51,8 @@ class HelloController {
     @GetMapping(value = "/names")
     @RequestMapping("/names")
     public String name() {
-        String wang = helloServiceFeign.name("wang");
+        System.out.println("name......");
+        String wang = helloServiceFeign.name();
         return wang;
     }
 }

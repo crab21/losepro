@@ -11,8 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -34,15 +32,28 @@ public class HelloService {
         return null;
     }
 
-    @HystrixCommand(commandKey = "hiService")
+    @HystrixCommand(commandKey = "hiService",
+            commandProperties = {
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "100"),//指定多久超时，单位毫秒。超时进fallback
+                    @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),//判断熔断的最少请求数，默认是10；只有在一个统计窗口内处理的请求数量达到这个阈值，才会进行熔断与否的判断
+                    @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10"),//判断熔断的阈值，默认值50，表示在一个统计窗口内有50%的请求处理失败，会触发熔断
+            },
+            threadPoolProperties = {
+                    @HystrixProperty(name = "coreSize", value = "30"),
+                    @HystrixProperty(name = "maxQueueSize", value = "101"),
+                    @HystrixProperty(name = "keepAliveTimeMinutes", value = "2"),
+                    @HystrixProperty(name = "queueSizeRejectionThreshold", value = "15"),
+                    @HystrixProperty(name = "metrics.rollingStats.numBuckets", value = "12"),
+                    @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "1440")
+            })
     public List<User> hiService(List<String> name) {
         System.out.println(name.size() + ">>>>>>>>>>>");
         String join = StringUtils.join(name, ",");
-        ParameterizedTypeReference<List<User>> responseType = new ParameterizedTypeReference<List<User>>() {};
+        ParameterizedTypeReference<List<User>> responseType = new ParameterizedTypeReference<List<User>>() {
+        };
 
         ResponseEntity<List<User>> exchange = restTemplate.exchange("http://SERVICE-HI/hi?name={1}", HttpMethod.GET, null, responseType, StringUtils.join(name, ","));
         List<User> body = exchange.getBody();
-
 
         return body;
     }
