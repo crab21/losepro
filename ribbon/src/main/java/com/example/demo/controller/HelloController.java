@@ -56,4 +56,5 @@ class HelloController {
         String wang = helloServiceFeign.name();
         return wang;
     }
+
 }

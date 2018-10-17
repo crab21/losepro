@@ -53,6 +53,7 @@ public class HelloService {
         };
 
         ResponseEntity<List<User>> exchange = restTemplate.exchange("http://SERVICE-HI/hi?name={1}", HttpMethod.GET, null, responseType, StringUtils.join(name, ","));
+
         List<User> body = exchange.getBody();
 
         return body;

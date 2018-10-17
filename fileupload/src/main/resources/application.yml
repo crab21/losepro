@@ -1,0 +1,19 @@
+spring:
+  boot:
+    admin:
+      notify:
+        mail:
+          to: 1164772625@qq.com
+          from: imrcrab@163.com
+      monitor:
+        connect-timeout: 5000ms
+        read-timeout: 5000ms
+  mail:
+    host: smtp.163.com
+    username: imrcrab@163.com
+    password: wpy110
+    properties:
+      mail.debug: false
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.ssl.enable: true
