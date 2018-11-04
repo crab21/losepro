@@ -11,7 +11,7 @@ public class MongodbTemplateLearn {
     MongoTemplate mongoTemplate;
 
     public String insert() {
-        mongoTemplate.findOne()
+        mongoTemplate.findOne();
         return "ok";
     }
 
