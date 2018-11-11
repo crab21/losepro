@@ -1,7 +1,14 @@
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.example.combinerabbit.mapper
+logging:
+  config: classpath:log4j2-spring.xml
 spring:
   datasource:
     primary:
-      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      url: jdbc:mysql://127.0.0.1:3306/shirotest?useUnicode=true&characterEncoding=utf-8&useSSL=false
       username: root
       password: root
 
@@ -44,23 +51,17 @@ spring:
       maxOpenPreparedStatements: 20
   mvc:
     view:
-      prefix: classpath:templates/views
+      prefix: classpath*:templates/views
       suffix: .html
-  mail:
-    port: 25
-    protocol: smtp
-    host: smtp.chengmail.cn
-    username: pywang@dhlk-tech.com
-    password: wangpeiyuan12345!
-    default-encoding: utf-8
-    properties:
-      mail.smtp.auth: true
-      mail.smtp.timeout: 25000
-
-
-mybatis:
-  mapper-locations: mapper/*Mapper.xml
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-logging:
-  config: classpath:log4j2-spring.xml
+#  mail:
+#    port: 25
+#    protocol: smtp
+#    host: smtp.chengmail.cn
+#    username: pywang@dhlk-tech.com
+#    password: wangpeiyuan12345!
+#    default-encoding: utf-8
+#    properties:
+#      mail.smtp.auth: true
+#      mail.smtp.timeout: 25000
+#
+#

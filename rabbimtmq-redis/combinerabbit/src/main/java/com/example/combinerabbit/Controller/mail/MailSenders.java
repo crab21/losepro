@@ -1,3 +1,4 @@
+/*
 package com.example.combinerabbit.Controller.mail;
 
 import org.apache.logging.log4j.LogManager;
@@ -45,3 +46,4 @@ public class MailSenders {
         return "ok";
     }
 }
+*/

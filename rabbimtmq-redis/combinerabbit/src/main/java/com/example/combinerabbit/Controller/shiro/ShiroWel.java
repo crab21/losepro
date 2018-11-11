@@ -4,6 +4,8 @@ import com.example.combinerabbit.Service.ShiroServiceImpl;
 import com.example.combinerabbit.model.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +48,8 @@ public class ShiroWel {
         return "ok";
     }
 
+    @RequiresRoles(value = "guan")
+    @RequiresPermissions(value = {"update"})
     @RequestMapping("/home")
     @ResponseBody
     public String home(){

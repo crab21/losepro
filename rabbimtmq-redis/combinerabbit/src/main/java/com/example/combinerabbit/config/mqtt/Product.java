@@ -76,7 +76,6 @@ public class Product {
 
             //设置消息服务质量
             message.setQos(2);
-
             mqttClient.publish(topic, message);
             Thread.sleep(100);
             if (++flag > 100) {

@@ -1,3 +1,4 @@
+/*
 package com.example.combinerabbit.Controller;
 
 import com.example.combinerabbit.Service.UserServiceImpl;
@@ -63,3 +64,4 @@ public class Test {
         return "ok";
     }
 }
+*/

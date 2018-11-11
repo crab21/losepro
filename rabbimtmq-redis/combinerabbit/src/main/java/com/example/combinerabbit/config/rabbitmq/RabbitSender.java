@@ -1,3 +1,4 @@
+/*
 package com.example.combinerabbit.config.rabbitmq;
 
 import com.example.combinerabbit.Service.UserServiceImpl;
@@ -19,6 +20,7 @@ public class RabbitSender implements RabbitTemplate.ConfirmCallback {
     Gson gson;
 
     public void sender(int i) {
+*/
 /*
         List<Users> update = userService.update();
 //        rabbitTemplate.setConfirmCallback(this);
@@ -28,7 +30,8 @@ public class RabbitSender implements RabbitTemplate.ConfirmCallback {
 
         rabbitTemplate.convertAndSend("mysql_userb", gson.toJson(update));
         System.out.println("[x] send:----"+gson.toJson(update));
-*/
+*//*
+
         rabbitTemplate.setConfirmCallback(this);
         rabbitTemplate.convertAndSend("mysql_usera", gson.toJson("a" + i));
         rabbitTemplate.convertAndSend("mysql_userb", gson.toJson("b" + i));
@@ -45,3 +48,4 @@ public class RabbitSender implements RabbitTemplate.ConfirmCallback {
         }
     }
 }
+*/

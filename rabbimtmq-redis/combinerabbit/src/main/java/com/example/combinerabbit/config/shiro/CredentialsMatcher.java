@@ -11,6 +11,8 @@ public class CredentialsMatcher extends SimpleCredentialsMatcher {
         UsernamePasswordToken utoken = (UsernamePasswordToken) token;
         String password = new String(utoken.getPassword());
         String dbpassword = (String) info.getCredentials();
+        System.out.println(password + "-------------------");
+        System.out.println(dbpassword + "--------------------");
         return this.equals(password, dbpassword);
     }
 }

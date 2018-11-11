@@ -1,3 +1,4 @@
+/*
 package com.example.combinerabbit.config.rabbitmq;
 
 import com.example.combinerabbit.Service.UserServiceImpl;
@@ -74,3 +75,4 @@ public class RabbitConsumer {
     }
 
 }
+*/

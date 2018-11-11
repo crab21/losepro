@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
@@ -26,7 +27,9 @@ public class MybatisDbAConfig {
     public SqlSessionFactory sqlSessionFactory1() throws Exception {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(ds1); // 使用titan数据源, 连接titan库
-
+        // 设置查找器
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        factoryBean.setMapperLocations(resolver.getResources("classpath*:mapper/*.xml"));
         return factoryBean.getObject();
 
     }

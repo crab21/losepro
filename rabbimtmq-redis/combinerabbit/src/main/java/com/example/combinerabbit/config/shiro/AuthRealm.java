@@ -15,6 +15,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
 @Configuration
 public class AuthRealm extends AuthorizingRealm {
     @Autowired
@@ -30,14 +32,17 @@ public class AuthRealm extends AuthorizingRealm {
                 Set<Module> modules = role.getModules();
                 if (modules.size() > 0) {
                     for (Module module : modules) {
-                        System.out.println(module.getMname()+">>>>>>>>>>>>>>>>>");
                         permissions.add(module.getMname());
                     }
                 }
             }
         }
+        permissions.stream().forEach(v -> System.out.println(v + "________>>>>>>>>>"));
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.addStringPermissions(permissions);//将权限放入shiro中.
+        Set<String> roleSet = roles.stream().map(Role::getRname).collect(Collectors.toSet());
+
+        info.setRoles(roleSet);
         return info;
     }
 
@@ -46,6 +51,7 @@ public class AuthRealm extends AuthorizingRealm {
 
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         String username = token.getUsername();
+        System.out.println(username + ">>>>>>>>>>>>>>>++++++++");
         User user = shiroService.findUserByUserName(username);
         return new SimpleAuthenticationInfo(user, user.getPassword(), this.getClass().getName());
     }

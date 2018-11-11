@@ -18,7 +18,7 @@ public class MyFormAuthentication extends FormAuthenticationFilter {
         subject = SecurityUtils.getSubject();
         User principal = (User) subject.getPrincipal();
         System.out.println(principal.getUid() + "-------------" + principal.getPassword() + "---" + principal.getRoles().size());
-        WebUtils.redirectToSavedRequest(request, response, "/rabb");
+        WebUtils.redirectToSavedRequest(request, response, "/home");
         return false;
     }
 }

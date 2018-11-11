@@ -13,4 +13,7 @@ public class ShiroServiceImpl {
    public User findUserByUserName(String username) {
         return shiroMapper.findByUserName(username);
     }
+    public int countId(){
+        return shiroMapper.countId();
+    }
 }

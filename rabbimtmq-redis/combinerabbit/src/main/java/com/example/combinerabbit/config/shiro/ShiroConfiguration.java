@@ -26,8 +26,11 @@ public class ShiroConfiguration {
         linkedHashMap.put("/loginUser", "anon");
         linkedHashMap.put("/logout*", "anon");
         linkedHashMap.put("/shirowel", "anon");
-        linkedHashMap.put("/msend", "anon");
-        linkedHashMap.put("/wells","anon");
+        linkedHashMap.put("/home", "anon");
+
+        linkedHashMap.put("/cnm", "anon");
+//        linkedHashMap.put("/msend", "anon");
+//        linkedHashMap.put("/wells","anon");
         linkedHashMap.put("/*", "authc");//表示需要认证才可以访问
         linkedHashMap.put("/**", "authc");//表示需要认证才可以访问
         linkedHashMap.put("/*.*", "authc");

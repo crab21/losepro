@@ -1,3 +1,4 @@
+/*
 package com.example.combinerabbit.config.rabbitmq;
 
 import org.springframework.amqp.core.AcknowledgeMode;
@@ -14,12 +15,14 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class RabbitConfig {
-    /**
+    */
+/**
      * 使用自动配置  无法确认消息是否发布成功.
      * so 使用注解配置的方式.
      *
      * @return
-     */
+     *//*
+
     @Bean
     public ConnectionFactory connectionFactory() {
         CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory();
@@ -63,3 +66,4 @@ public class RabbitConfig {
         return container;
     }
 }
+*/
